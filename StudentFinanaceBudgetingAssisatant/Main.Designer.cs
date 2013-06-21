@@ -42,7 +42,7 @@
             this.DTRepeatEndIn = new System.Windows.Forms.DateTimePicker();
             this.DTRepeatStartIn = new System.Windows.Forms.DateTimePicker();
             this.CBInRepeat = new System.Windows.Forms.CheckBox();
-            this.BtnSaveIn = new System.Windows.Forms.Button();
+            this.BtnAddIn = new System.Windows.Forms.Button();
             this.CBInCompleted = new System.Windows.Forms.CheckBox();
             this.TBInComment = new System.Windows.Forms.TextBox();
             this.DTInReal = new System.Windows.Forms.DateTimePicker();
@@ -53,7 +53,7 @@
             this.LaIn = new System.Windows.Forms.Label();
             this.LBIn = new System.Windows.Forms.ListBox();
             this.TabOut = new System.Windows.Forms.TabPage();
-            this.BtnSaveOut = new System.Windows.Forms.Button();
+            this.BtnAddOut = new System.Windows.Forms.Button();
             this.TBOutComment = new System.Windows.Forms.TextBox();
             this.CBRepeatFreqOut = new System.Windows.Forms.ComboBox();
             this.DTRepeatEndOut = new System.Windows.Forms.DateTimePicker();
@@ -68,6 +68,7 @@
             this.TBOutName = new System.Windows.Forms.TextBox();
             this.LaOut = new System.Windows.Forms.Label();
             this.LBOut = new System.Windows.Forms.ListBox();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TabOverview.SuspendLayout();
             this.TabIn.SuspendLayout();
@@ -127,6 +128,7 @@
             this.tabControl1.Controls.Add(this.TabOverview);
             this.tabControl1.Controls.Add(this.TabIn);
             this.tabControl1.Controls.Add(this.TabOut);
+            this.tabControl1.ItemSize = new System.Drawing.Size(80, 18);
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -171,7 +173,7 @@
             this.TabIn.Controls.Add(this.DTRepeatEndIn);
             this.TabIn.Controls.Add(this.DTRepeatStartIn);
             this.TabIn.Controls.Add(this.CBInRepeat);
-            this.TabIn.Controls.Add(this.BtnSaveIn);
+            this.TabIn.Controls.Add(this.BtnAddIn);
             this.TabIn.Controls.Add(this.CBInCompleted);
             this.TabIn.Controls.Add(this.TBInComment);
             this.TabIn.Controls.Add(this.DTInReal);
@@ -241,15 +243,15 @@
             this.CBInRepeat.UseVisualStyleBackColor = true;
             this.CBInRepeat.CheckStateChanged += new System.EventHandler(this.ToggleRepeatIn);
             // 
-            // BtnSaveIn
+            // BtnAddIn
             // 
-            this.BtnSaveIn.Location = new System.Drawing.Point(610, 422);
-            this.BtnSaveIn.Name = "BtnSaveIn";
-            this.BtnSaveIn.Size = new System.Drawing.Size(75, 23);
-            this.BtnSaveIn.TabIndex = 10;
-            this.BtnSaveIn.Text = "BtnSaveIn";
-            this.BtnSaveIn.UseVisualStyleBackColor = true;
-            this.BtnSaveIn.Click += new System.EventHandler(this.BtnSaveIn_Click);
+            this.BtnAddIn.Location = new System.Drawing.Point(610, 422);
+            this.BtnAddIn.Name = "BtnAddIn";
+            this.BtnAddIn.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddIn.TabIndex = 10;
+            this.BtnAddIn.Text = "BtnAddIn";
+            this.BtnAddIn.UseVisualStyleBackColor = true;
+            this.BtnAddIn.Click += new System.EventHandler(this.BtnAddIn_Click);
             // 
             // CBInCompleted
             // 
@@ -343,7 +345,7 @@
             // 
             // TabOut
             // 
-            this.TabOut.Controls.Add(this.BtnSaveOut);
+            this.TabOut.Controls.Add(this.BtnAddOut);
             this.TabOut.Controls.Add(this.TBOutComment);
             this.TabOut.Controls.Add(this.CBRepeatFreqOut);
             this.TabOut.Controls.Add(this.DTRepeatEndOut);
@@ -365,15 +367,15 @@
             this.TabOut.Text = "TabOut";
             this.TabOut.UseVisualStyleBackColor = true;
             // 
-            // BtnSaveOut
+            // BtnAddOut
             // 
-            this.BtnSaveOut.Location = new System.Drawing.Point(610, 422);
-            this.BtnSaveOut.Name = "BtnSaveOut";
-            this.BtnSaveOut.Size = new System.Drawing.Size(75, 23);
-            this.BtnSaveOut.TabIndex = 27;
-            this.BtnSaveOut.Text = "BtnSaveOut";
-            this.BtnSaveOut.UseVisualStyleBackColor = true;
-            this.BtnSaveOut.Click += new System.EventHandler(this.BtnSaveOut_Click);
+            this.BtnAddOut.Location = new System.Drawing.Point(610, 422);
+            this.BtnAddOut.Name = "BtnAddOut";
+            this.BtnAddOut.Size = new System.Drawing.Size(75, 23);
+            this.BtnAddOut.TabIndex = 27;
+            this.BtnAddOut.Text = "BtnAddOut";
+            this.BtnAddOut.UseVisualStyleBackColor = true;
+            this.BtnAddOut.Click += new System.EventHandler(this.BtnAddOut_Click);
             // 
             // TBOutComment
             // 
@@ -517,11 +519,22 @@
             this.LBOut.Size = new System.Drawing.Size(234, 355);
             this.LBOut.TabIndex = 1;
             // 
+            // BtnSave
+            // 
+            this.BtnSave.Location = new System.Drawing.Point(361, 1);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(75, 23);
+            this.BtnSave.TabIndex = 28;
+            this.BtnSave.Text = "BtnSave";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.WriteToFile);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(701, 506);
+            this.Controls.Add(this.BtnSave);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.MainMenu);
             this.MainMenuStrip = this.MainMenu;
@@ -564,7 +577,7 @@
         private System.Windows.Forms.NumericUpDown NuInAmountReal;
         private System.Windows.Forms.NumericUpDown NuInAmountPre;
         private System.Windows.Forms.TextBox TBInName;
-        private System.Windows.Forms.Button BtnSaveIn;
+        private System.Windows.Forms.Button BtnAddIn;
         private System.Windows.Forms.CheckBox CBInRepeat;
         private System.Windows.Forms.DateTimePicker DTRepeatEndIn;
         private System.Windows.Forms.DateTimePicker DTRepeatStartIn;
@@ -583,8 +596,9 @@
         private System.Windows.Forms.DateTimePicker DTRepeatEndOut;
         private System.Windows.Forms.DateTimePicker DTRepeatStartOut;
         private System.Windows.Forms.CheckBox CBOutRepeat;
-        private System.Windows.Forms.Button BtnSaveOut;
+        private System.Windows.Forms.Button BtnAddOut;
         private System.Windows.Forms.TextBox TBOutComment;
+        private System.Windows.Forms.Button BtnSave;
     }
 }
 
