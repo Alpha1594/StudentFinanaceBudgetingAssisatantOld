@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.MainMenu = new System.Windows.Forms.MenuStrip();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Resultant = new System.Windows.Forms.Label();
             this.In = new System.Windows.Forms.Label();
             this.Out = new System.Windows.Forms.Label();
@@ -53,6 +54,8 @@
             this.LaIn = new System.Windows.Forms.Label();
             this.LBIn = new System.Windows.Forms.ListBox();
             this.TabOut = new System.Windows.Forms.TabPage();
+            this.LaAccomodation = new System.Windows.Forms.Label();
+            this.LaFood = new System.Windows.Forms.Label();
             this.BtnAddOut = new System.Windows.Forms.Button();
             this.TBOutComment = new System.Windows.Forms.TextBox();
             this.CBRepeatFreqOut = new System.Windows.Forms.ComboBox();
@@ -69,6 +72,7 @@
             this.LaOut = new System.Windows.Forms.Label();
             this.LBOut = new System.Windows.Forms.ListBox();
             this.BtnSave = new System.Windows.Forms.Button();
+            this.MainMenu.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.TabOverview.SuspendLayout();
             this.TabIn.SuspendLayout();
@@ -81,11 +85,21 @@
             // 
             // MainMenu
             // 
+            this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.configurationToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Size = new System.Drawing.Size(701, 24);
             this.MainMenu.TabIndex = 0;
             this.MainMenu.Text = "menuStrip1";
+            // 
+            // configurationToolStripMenuItem
+            // 
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            this.configurationToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
+            this.configurationToolStripMenuItem.Size = new System.Drawing.Size(93, 20);
+            this.configurationToolStripMenuItem.Text = "Configuration";
+            this.configurationToolStripMenuItem.Click += new System.EventHandler(this.EditConfig);
             // 
             // Resultant
             // 
@@ -219,6 +233,7 @@
             // DTRepeatEndIn
             // 
             this.DTRepeatEndIn.Enabled = false;
+            this.DTRepeatEndIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTRepeatEndIn.Location = new System.Drawing.Point(458, 174);
             this.DTRepeatEndIn.Name = "DTRepeatEndIn";
             this.DTRepeatEndIn.Size = new System.Drawing.Size(120, 20);
@@ -227,6 +242,7 @@
             // DTRepeatStartIn
             // 
             this.DTRepeatStartIn.Enabled = false;
+            this.DTRepeatStartIn.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTRepeatStartIn.Location = new System.Drawing.Point(332, 174);
             this.DTRepeatStartIn.Name = "DTRepeatStartIn";
             this.DTRepeatStartIn.Size = new System.Drawing.Size(120, 20);
@@ -276,13 +292,16 @@
             // DTInReal
             // 
             this.DTInReal.Enabled = false;
+            this.DTInReal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTInReal.Location = new System.Drawing.Point(458, 91);
             this.DTInReal.Name = "DTInReal";
             this.DTInReal.Size = new System.Drawing.Size(120, 20);
             this.DTInReal.TabIndex = 7;
+            this.DTInReal.EnabledChanged += new System.EventHandler(this.CompletionToggleIn);
             // 
             // DTInDeadline
             // 
+            this.DTInDeadline.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTInDeadline.Location = new System.Drawing.Point(332, 91);
             this.DTInDeadline.Name = "DTInDeadline";
             this.DTInDeadline.Size = new System.Drawing.Size(120, 20);
@@ -302,6 +321,7 @@
             this.NuInAmountReal.Size = new System.Drawing.Size(120, 20);
             this.NuInAmountReal.TabIndex = 5;
             this.NuInAmountReal.ThousandsSeparator = true;
+            this.NuInAmountReal.ValueChanged += new System.EventHandler(this.InOnBudget);
             // 
             // NuInAmountPre
             // 
@@ -316,6 +336,7 @@
             this.NuInAmountPre.Size = new System.Drawing.Size(120, 20);
             this.NuInAmountPre.TabIndex = 4;
             this.NuInAmountPre.ThousandsSeparator = true;
+            this.NuInAmountPre.ValueChanged += new System.EventHandler(this.InOnBudget);
             // 
             // TBInName
             // 
@@ -342,9 +363,12 @@
             this.LBIn.Name = "LBIn";
             this.LBIn.Size = new System.Drawing.Size(234, 355);
             this.LBIn.TabIndex = 0;
+            this.LBIn.SelectedIndexChanged += new System.EventHandler(this.LBIn_SelectedIndexChanged);
             // 
             // TabOut
             // 
+            this.TabOut.Controls.Add(this.LaAccomodation);
+            this.TabOut.Controls.Add(this.LaFood);
             this.TabOut.Controls.Add(this.BtnAddOut);
             this.TabOut.Controls.Add(this.TBOutComment);
             this.TabOut.Controls.Add(this.CBRepeatFreqOut);
@@ -366,6 +390,24 @@
             this.TabOut.TabIndex = 2;
             this.TabOut.Text = "TabOut";
             this.TabOut.UseVisualStyleBackColor = true;
+            // 
+            // LaAccomodation
+            // 
+            this.LaAccomodation.AutoSize = true;
+            this.LaAccomodation.Location = new System.Drawing.Point(245, 46);
+            this.LaAccomodation.Name = "LaAccomodation";
+            this.LaAccomodation.Size = new System.Drawing.Size(87, 13);
+            this.LaAccomodation.TabIndex = 29;
+            this.LaAccomodation.Text = "LaAccomodation";
+            // 
+            // LaFood
+            // 
+            this.LaFood.AutoSize = true;
+            this.LaFood.Location = new System.Drawing.Point(245, 32);
+            this.LaFood.Name = "LaFood";
+            this.LaFood.Size = new System.Drawing.Size(43, 13);
+            this.LaFood.TabIndex = 28;
+            this.LaFood.Text = "LaFood";
             // 
             // BtnAddOut
             // 
@@ -406,6 +448,7 @@
             // DTRepeatEndOut
             // 
             this.DTRepeatEndOut.Enabled = false;
+            this.DTRepeatEndOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTRepeatEndOut.Location = new System.Drawing.Point(458, 174);
             this.DTRepeatEndOut.Name = "DTRepeatEndOut";
             this.DTRepeatEndOut.Size = new System.Drawing.Size(120, 20);
@@ -414,6 +457,7 @@
             // DTRepeatStartOut
             // 
             this.DTRepeatStartOut.Enabled = false;
+            this.DTRepeatStartOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTRepeatStartOut.Location = new System.Drawing.Point(332, 174);
             this.DTRepeatStartOut.Name = "DTRepeatStartOut";
             this.DTRepeatStartOut.Size = new System.Drawing.Size(120, 20);
@@ -433,6 +477,7 @@
             // DTOutReal
             // 
             this.DTOutReal.Enabled = false;
+            this.DTOutReal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTOutReal.Location = new System.Drawing.Point(458, 91);
             this.DTOutReal.Name = "DTOutReal";
             this.DTOutReal.Size = new System.Drawing.Size(120, 20);
@@ -466,6 +511,7 @@
             // 
             // DTOutDeadline
             // 
+            this.DTOutDeadline.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DTOutDeadline.Location = new System.Drawing.Point(332, 91);
             this.DTOutDeadline.Name = "DTOutDeadline";
             this.DTOutDeadline.Size = new System.Drawing.Size(120, 20);
@@ -484,6 +530,7 @@
             this.NuOutAmountPre.Size = new System.Drawing.Size(120, 20);
             this.NuOutAmountPre.TabIndex = 17;
             this.NuOutAmountPre.ThousandsSeparator = true;
+            this.NuOutAmountPre.ValueChanged += new System.EventHandler(this.OutOnBudget);
             // 
             // CBOutCategory
             // 
@@ -518,6 +565,7 @@
             this.LBOut.Name = "LBOut";
             this.LBOut.Size = new System.Drawing.Size(234, 355);
             this.LBOut.TabIndex = 1;
+            this.LBOut.SelectedIndexChanged += new System.EventHandler(this.LBOut_SelectedIndexChanged);
             // 
             // BtnSave
             // 
@@ -540,6 +588,8 @@
             this.MainMenuStrip = this.MainMenu;
             this.Name = "Main";
             this.Text = "Main";
+            this.MainMenu.ResumeLayout(false);
+            this.MainMenu.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.TabOverview.ResumeLayout(false);
             this.TabOverview.PerformLayout();
@@ -570,7 +620,6 @@
         private System.Windows.Forms.ListBox LBNextTransactions;
         private System.Windows.Forms.Label LaIn;
         private System.Windows.Forms.ListBox LBIn;
-        private System.Windows.Forms.CheckBox CBInCompleted;
         private System.Windows.Forms.TextBox TBInComment;
         private System.Windows.Forms.DateTimePicker DTInReal;
         private System.Windows.Forms.DateTimePicker DTInDeadline;
@@ -599,6 +648,10 @@
         private System.Windows.Forms.Button BtnAddOut;
         private System.Windows.Forms.TextBox TBOutComment;
         private System.Windows.Forms.Button BtnSave;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.CheckBox CBInCompleted;
+        private System.Windows.Forms.Label LaFood;
+        private System.Windows.Forms.Label LaAccomodation;
     }
 }
 

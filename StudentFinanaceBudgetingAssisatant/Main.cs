@@ -19,21 +19,29 @@ namespace StudentFinanaceBudgetingAssisatant
         public Main()
         {
             InitializeComponent();
-            foreach (string str in Categories)
+            foreach (string str in CategorieIn)
             {
                 CBInCategory.Items.Add(str);
+            }
+
+            foreach (string str in CategoriesOut)
+            {
                 CBOutCategory.Items.Add(str);
             }
             LoadData();
+            Total();
         }
 
         #region SharedVaribles
         public enum Type { In, Out };
         enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy };
-        string[] Categories = { "Food", "Accomodation" };
+        string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };
+        string[] CategoriesOut = { "Food", "Accomodation" };
         decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
         public decimal TotalIncome;
         public decimal TotalOutcome;
+        public decimal Food;
+        public decimal Accomodation;
         public decimal Balance;
         public StoredData SD;
         public int LimNextTranaction = 10;
@@ -84,6 +92,29 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Out = Outcome;
             }
         }
+
+        public struct Configuration
+        {
+            public DateTime StartT1;
+            public DateTime EndT1;
+            public DateTime StartT2;
+            public DateTime EndT2;
+            public DateTime StartT3;
+            public DateTime EndT3;
+
+            public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3, DateTime ET3)
+            {
+                this.StartT1 = ST1;
+                this.EndT1 = ET1;
+                this.StartT2 = ST2;
+                this.EndT2 = ET2;
+                this.StartT3 = ST3;
+                this.EndT3 = ET3;
+            }
+        }
+
+        public Configuration RC = new Configuration();
+        
         #endregion
 
         #region In
@@ -101,7 +132,7 @@ namespace StudentFinanaceBudgetingAssisatant
                 NuInAmountReal.Enabled = true;
                 DTInReal.Enabled = true;
 
-				// Add check to avoid overwriting existing values.
+                // Add check to avoid overwriting existing values.
                 NuInAmountReal.Value = NuInAmountPre.Value;
                 DTInReal.Value = DateTime.Now;
             }
@@ -131,12 +162,19 @@ namespace StudentFinanaceBudgetingAssisatant
         private void BtnAddIn_Click(object sender, EventArgs e)
         {
             Transactions temp = new Transactions(TBInName.Text, CBInCategory.Text, Type.In.ToString(),
-                NuInAmountPre.Value, (CBInCompleted.Checked == true? NuInAmountReal.Value : 0),
-                CBInCompleted.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
+                NuInAmountPre.Value, (DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
+                DTInDeadline.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
                 CBInRepeat.Checked, DTRepeatStartIn.Value, DTRepeatEndIn.Value,
                 CBRepeatFreqIn.Text);
 
             Income.Add(temp);
+            
+            if (sender.ToString().Contains("Update"))
+            {
+                Income.RemoveAt(LBIn.SelectedIndex);
+                BtnAddIn.Text = "BtnAddIn";
+            }
+
             PopulateTransLists();
             WriteToFile(sender, e);
         }
@@ -145,8 +183,43 @@ namespace StudentFinanaceBudgetingAssisatant
         {
             string Input = sender.ToString().Substring(sender.ToString().LastIndexOf(":") + 2);
             // MessageBox.Show(Input);
-            LaIn.ForeColor = TxtFormat(Input);
-            In.ForeColor = TxtFormat(Input);
+            LaIn.ForeColor = TxtFormat(TotalIncome);
+            In.ForeColor = TxtFormat(TotalIncome);
+        }
+
+        private void InOnBudget(object sender, EventArgs e)
+        {
+            if (NuInAmountReal.Value < NuInAmountPre.Value && CBInCompleted.Checked == true)
+                // Red if income < prediction
+            {
+                NuInAmountReal.BackColor = Color.Red;
+                NuInAmountPre.BackColor = Color.Red;
+            }
+            else
+            {
+                NuInAmountPre.BackColor = Color.White;
+                NuInAmountReal.BackColor = Color.White;
+            }
+        }
+        
+        private void LBIn_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = LBIn.SelectedIndex;
+
+            TBInName.Text = Income[index].Name;
+            CBInCategory.Text = Income[index].Category;
+            NuInAmountPre.Value = Income[index].AmountPre;
+            DTInDeadline.Value = Income[index].Deadline;
+            NuInAmountReal.Value = Income[index].AmountReal;
+            DTInReal.Value = Income[index].ProcessedOn;
+            CBInCompleted.Checked = Income[index].Completed;
+            CBInRepeat.Checked = Income[index].Repeat;
+            DTRepeatStartIn.Value = Income[index].RepeatStart;
+            DTRepeatEndIn.Value = Income[index].RepeatEnd;
+            CBRepeatFreqOut.Text = Income[index].RepeatFreq;
+            TBInComment.Lines = Income[index].Comment;
+
+            BtnAddIn.Text = "Update";
         }
 
         #endregion
@@ -201,6 +274,12 @@ namespace StudentFinanaceBudgetingAssisatant
                 CBOutRepeat.Checked, DTRepeatStartOut.Value, DTRepeatEndOut.Value,
                 CBRepeatFreqIn.Text);
 
+            if (sender.ToString().Contains("Update"))
+            {
+                Outcome.RemoveAt(LBOut.SelectedIndex);
+                BtnAddOut.Text = "BtnAddOut";
+            }
+
             Outcome.Add(temp);
             PopulateTransLists();
             WriteToFile(sender, e);
@@ -225,63 +304,105 @@ namespace StudentFinanaceBudgetingAssisatant
             LaOut.ForeColor = ColorCode;
             Out.ForeColor = ColorCode;
         }
-        
+
         private void ResultantFmt(object sender, EventArgs e)
         {
             string Input = sender.ToString().Substring(sender.ToString().LastIndexOf(":") + 2);
-            Resultant.ForeColor = TxtFormat(Input);
+            Resultant.ForeColor = TxtFormat(Balance);
             OutFmt(sender, e);
         }
 
+        private void OutOnBudget(object sender, EventArgs e)
+        {
+            if (NuOutAmountReal.Value > NuOutAmountPre.Value)
+            {
+                NuOutAmountReal.BackColor = Color.Red;
+                NuOutAmountPre.BackColor = Color.Red;
+            }
+            else
+            {
+                NuOutAmountPre.BackColor = Color.White;
+                NuOutAmountReal.BackColor = Color.White;
+            }
+        }
+        
+        private void LBOut_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = LBOut.SelectedIndex;
+            
+            TBOutName.Text = Outcome[index].Name;
+            CBOutCategory.Text = Outcome[index].Category;
+            NuOutAmountPre.Value = Outcome[index].AmountPre;
+            DTOutDeadline.Value = Outcome[index].Deadline;
+            NuOutAmountReal.Value = Outcome[index].AmountReal;
+            DTOutReal.Value = Outcome[index].ProcessedOn;
+            CBOutCompleted.Checked = Outcome[index].Completed;
+            CBOutRepeat.Checked = Outcome[index].Repeat;
+            DTRepeatStartOut.Value = Outcome[index].RepeatStart;
+            DTRepeatEndOut.Value = Outcome[index].RepeatEnd;
+            CBRepeatFreqOut.Text = Outcome[index].RepeatFreq;
+            TBOutComment.Lines = Outcome[index].Comment;
+
+            BtnAddOut.Text = "Update";
+        }
         #endregion
 
 		#region Common
-        private Color TxtFormat(string Input)
+        private Color TxtFormat(decimal Input)
 		{
-            try {
-                decimal TempCash = decimal.Parse(Input);
-                if (TempCash < 0)
-                {
-                    return Color.Red;
-                }
-				else if (TempCash >= BreakEvenThreshold)
-				{
-                    return Color.Green;
-				}
-				else
-				{
-                    return Color.Black;
-				}
-            }
-            catch { 
-                MessageBox.Show("This is not a number");
-                return Color.Black;
-            }
+            //if (Input < 0)
+            //{
+            //    return Color.Red;
+            //}
+            //else if (Input >= BreakEvenThreshold)
+            //{
+            //    return Color.Green;
+            //}
+            //else
+            //{
+            //    return Color.Black;
+            //}
+            return Input < 0 ? Color.Red : Input >= BreakEvenThreshold ? Color.Green : Color.Black;
         }
 
         private void Total() // Calculates Income, Outcome & balance && Updates GUI
         {
             TotalIncome = 0;
             TotalOutcome = 0;
+            Food = 0;
+            Accomodation = 0;
             Balance = 0;
 
             foreach (Transactions T in Income)
             {
                 TotalIncome += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
             }
-            In.Text = TotalIncome.ToString();
-            LaIn.Text = TotalIncome.ToString();
 
             foreach (Transactions U in Outcome)
             {
                 TotalOutcome += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                switch (U.Category)
+                {
+                    case "Food":
+                        Food += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                        break;
+                    case "Accomodation":
+                        Accomodation += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                        break;
+                    default:
+                        break;
+                }
             }
-            
-            Out.Text = TotalOutcome.ToString();
-            LaOut.Text = TotalOutcome.ToString();
+            In.Text = "£ " + TotalIncome.ToString();
+            LaIn.Text = "£ " + TotalIncome.ToString();
+
+            Out.Text = "£ " + TotalOutcome.ToString();
+            LaOut.Text = "£ " + TotalOutcome.ToString();
+            LaFood.Text = "£ " + Food.ToString();
+            LaAccomodation.Text = "£ " + Accomodation.ToString();
 
             Balance = TotalIncome - TotalOutcome;
-            Resultant.Text = Balance.ToString();
+            Resultant.Text = "£ " + Balance.ToString();
         }
 
         private void WriteToFile(object sender, EventArgs e)
@@ -336,6 +457,43 @@ namespace StudentFinanaceBudgetingAssisatant
             }
             Total();
         }
+
+        public void StoreConfig()
+        {
+            XmlSerializer XSR = new XmlSerializer(typeof(Configuration));
+            FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Create);
+            XSR.Serialize(ConfigStream, RC);
+            ConfigStream.Close();
+        }
+
+        public void LoadConfig()
+        {
+            XmlSerializer XSR = new XmlSerializer(typeof(Configuration));
+            Load:
+            if (File.Exists("Finances.rc"))
+            {
+                FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Open);
+                if (ConfigStream.Length > 0)
+                {
+                    RC = (Configuration)XSR.Deserialize(ConfigStream);
+                }
+                ConfigStream.Close();
+            }
+            else
+            {
+                FileStream FS = new FileStream("Finances.rc", FileMode.Create);
+                FS.Close();
+                goto Load;
+            }
+        }
 		#endregion
+
+        private void EditConfig(object sender, EventArgs e)
+        {
+            Config C = new Config();
+            C.ShowDialog();
+        }
+
+
     }
 }
