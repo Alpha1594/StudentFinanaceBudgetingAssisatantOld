@@ -34,7 +34,8 @@ namespace StudentFinanaceBudgetingAssisatant
 
         #region SharedVaribles
         public enum Type { In, Out };
-        enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy };
+        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy };
+        public RepeatFreq RF = RepeatFreq.Anualy;
         string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };
         string[] CategoriesOut = { "Food", "Accomodation" };
         decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
@@ -92,6 +93,28 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Out = Outcome;
             }
         }
+
+        public struct TotalPerTime
+        {
+            public decimal Previous;
+            public decimal Current;
+            public TotalPerTime(decimal Previous, decimal Current)
+            {
+                this.Previous = Previous;
+                this.Current = Current;
+            }
+        }
+        public TotalPerTime InAnualy;
+        public TotalPerTime InTermly;
+        public TotalPerTime InQuarterly;
+        public TotalPerTime InMonthly;
+        public TotalPerTime InWeekly;
+
+        public TotalPerTime OutAnualy;
+        public TotalPerTime OutTermly;
+        public TotalPerTime OutQuarterly;
+        public TotalPerTime OutMonthly;
+        public TotalPerTime OutWeekly;
 
         public struct Configuration
         {
@@ -205,21 +228,60 @@ namespace StudentFinanaceBudgetingAssisatant
         private void LBIn_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = LBIn.SelectedIndex;
+            if (index == -1)
+                return;
+            else
+            {
+                TBInName.Text = Income[index].Name;
+                CBInCategory.Text = Income[index].Category;
+                NuInAmountPre.Value = Income[index].AmountPre;
+                DTInDeadline.Value = Income[index].Deadline;
+                NuInAmountReal.Value = Income[index].AmountReal;
+                DTInReal.Value = Income[index].ProcessedOn;
+                CBInCompleted.Checked = Income[index].Completed;
+                CBInRepeat.Checked = Income[index].Repeat;
+                DTRepeatStartIn.Value = Income[index].RepeatStart;
+                DTRepeatEndIn.Value = Income[index].RepeatEnd;
+                CBRepeatFreqOut.Text = Income[index].RepeatFreq;
+                TBInComment.Lines = Income[index].Comment;
 
-            TBInName.Text = Income[index].Name;
-            CBInCategory.Text = Income[index].Category;
-            NuInAmountPre.Value = Income[index].AmountPre;
-            DTInDeadline.Value = Income[index].Deadline;
-            NuInAmountReal.Value = Income[index].AmountReal;
-            DTInReal.Value = Income[index].ProcessedOn;
-            CBInCompleted.Checked = Income[index].Completed;
-            CBInRepeat.Checked = Income[index].Repeat;
-            DTRepeatStartIn.Value = Income[index].RepeatStart;
-            DTRepeatEndIn.Value = Income[index].RepeatEnd;
-            CBRepeatFreqOut.Text = Income[index].RepeatFreq;
-            TBInComment.Lines = Income[index].Comment;
+                BtnAddIn.Text = "Update";
+            }
+        }
 
-            BtnAddIn.Text = "Update";
+        private void ResetTabIn(object sender, EventArgs e)
+        {
+            TextBox[] TB = { TBInName, TBInComment};
+            foreach (TextBox T in TB)
+            {
+                T.Clear();
+            }
+
+            ComboBox[] CB = { CBInCategory, CBRepeatFreqIn};
+            foreach (ComboBox C in CB)
+            {
+                C.Text = "";
+            }
+
+            NumericUpDown[] Nu = { NuInAmountPre, NuInAmountReal};
+            foreach (NumericUpDown N in Nu)
+            {
+                N.Value = 0;
+            }
+
+            CheckBox[] cb = { CBInCompleted, CBInRepeat};
+            foreach (CheckBox c in cb)
+            {
+                c.Checked = false;
+            }
+
+            DateTimePicker[] DTP = { DTInDeadline, DTInReal};
+            foreach (DateTimePicker D in DTP)
+            {
+                D.Value = DateTime.Today;
+            }
+            BtnAddIn.Text = "BtnAddIn";
+            LBIn.SelectedIndex = -1;
         }
 
         #endregion
@@ -329,22 +391,62 @@ namespace StudentFinanaceBudgetingAssisatant
         private void LBOut_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = LBOut.SelectedIndex;
-            
-            TBOutName.Text = Outcome[index].Name;
-            CBOutCategory.Text = Outcome[index].Category;
-            NuOutAmountPre.Value = Outcome[index].AmountPre;
-            DTOutDeadline.Value = Outcome[index].Deadline;
-            NuOutAmountReal.Value = Outcome[index].AmountReal;
-            DTOutReal.Value = Outcome[index].ProcessedOn;
-            CBOutCompleted.Checked = Outcome[index].Completed;
-            CBOutRepeat.Checked = Outcome[index].Repeat;
-            DTRepeatStartOut.Value = Outcome[index].RepeatStart;
-            DTRepeatEndOut.Value = Outcome[index].RepeatEnd;
-            CBRepeatFreqOut.Text = Outcome[index].RepeatFreq;
-            TBOutComment.Lines = Outcome[index].Comment;
+            if (index == -1)
+                return;
+            else
+            {
+                TBOutName.Text = Outcome[index].Name;
+                CBOutCategory.Text = Outcome[index].Category;
+                NuOutAmountPre.Value = Outcome[index].AmountPre;
+                DTOutDeadline.Value = Outcome[index].Deadline;
+                NuOutAmountReal.Value = Outcome[index].AmountReal;
+                DTOutReal.Value = Outcome[index].ProcessedOn;
+                CBOutCompleted.Checked = Outcome[index].Completed;
+                CBOutRepeat.Checked = Outcome[index].Repeat;
+                DTRepeatStartOut.Value = Outcome[index].RepeatStart;
+                DTRepeatEndOut.Value = Outcome[index].RepeatEnd;
+                CBRepeatFreqOut.Text = Outcome[index].RepeatFreq;
+                TBOutComment.Lines = Outcome[index].Comment;
 
-            BtnAddOut.Text = "Update";
+                BtnAddOut.Text = "Update";
+            }
         }
+
+        private void ResetTabOut(object sender, EventArgs e)
+        {
+            TextBox[] TB = { TBOutComment, TBOutName };
+            foreach (TextBox T in TB)
+            {
+                T.Clear();
+            }
+
+            ComboBox[] CB = { CBOutCategory, CBRepeatFreqOut };
+            foreach (ComboBox C in CB)
+            {
+                C.Text = "";
+            }
+
+            NumericUpDown[] Nu = { NuOutAmountPre, NuOutAmountReal };
+            foreach (NumericUpDown N in Nu)
+            {
+                N.Value = 0;
+            }
+
+            CheckBox[] cb = { CBOutCompleted, CBOutRepeat };
+            foreach (CheckBox c in cb)
+            {
+                c.Checked = false;
+            }
+
+            DateTimePicker[] DTP = { DTOutDeadline, DTOutReal };
+            foreach (DateTimePicker D in DTP)
+            {
+                D.Value = DateTime.Today;
+            }
+            BtnAddOut.Text = "BtnAddOut";
+            LBOut.SelectedIndex = -1;
+        }
+
         #endregion
 
 		#region Common
@@ -372,27 +474,57 @@ namespace StudentFinanaceBudgetingAssisatant
             Food = 0;
             Accomodation = 0;
             Balance = 0;
+            InMonthly.Current = 0;
+            InMonthly.Previous = 0;
+            OutMonthly.Current = 0;
+            OutMonthly.Previous = 0;
 
             foreach (Transactions T in Income)
             {
                 TotalIncome += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+
+                if (T.Deadline.Month == DateTime.Today.Month)
+                {
+                    InMonthly.Current += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+                }
+                else if (T.Deadline.Month < DateTime.Today.Month)
+                {
+                    InMonthly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+                }
             }
 
             foreach (Transactions U in Outcome)
             {
                 TotalOutcome += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                switch (U.Category)
+                
+
+                if (U.Deadline.Month == DateTime.Today.Month)
                 {
-                    case "Food":
-                        Food += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                        break;
-                    case "Accomodation":
-                        Accomodation += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                        break;
-                    default:
-                        break;
+                    OutMonthly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                    switch (U.Category)
+                    {
+                        case "Food":
+                            Food += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                            break;
+                        case "Accomodation":
+                            Accomodation += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (U.Deadline.Month < DateTime.Today.Month)
+                {
+                    OutMonthly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
                 }
             }
+
+            if (RF == RepeatFreq.Monthly)
+            {
+                TotalIncome = InMonthly.Current;
+                TotalOutcome = OutMonthly.Current;
+            }
+
             In.Text = "£ " + TotalIncome.ToString();
             LaIn.Text = "£ " + TotalIncome.ToString();
 
@@ -494,6 +626,41 @@ namespace StudentFinanaceBudgetingAssisatant
             C.ShowDialog();
         }
 
+        #region TransactionMode
+        private void RCMAnual_Click(object sender, EventArgs e)
+        {
+            RF = RepeatFreq.Anualy;
+            MessageBox.Show(RF.ToString());
+            Total();
+        }
 
+        private void RCMTerm_Click(object sender, EventArgs e)
+        {
+            RF = RepeatFreq.Termly;
+            MessageBox.Show(RF.ToString());
+            Total();
+        }
+
+        private void RCMQuarter_Click(object sender, EventArgs e)
+        {
+            RF = RepeatFreq.Quarterly;
+            MessageBox.Show(RF.ToString());
+            Total();
+        }
+
+        private void RCMMonth_Click(object sender, EventArgs e)
+        {
+            RF = RepeatFreq.Monthly;
+            MessageBox.Show(RF.ToString());
+            Total();
+        }
+
+        private void RCMWeek_Click(object sender, EventArgs e)
+        {
+            RF = RepeatFreq.Weekly;
+            MessageBox.Show(RF.ToString());
+            Total();
+        }
+        #endregion
     }
 }

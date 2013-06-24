@@ -1,0 +1,26 @@
+Breakdown of finance for given time
+	Will be dependant on known variables 
+		Term times
+		What day to start week on
+		Options to include & ignore previous time
+
+Repeating transactions
+	Store these together & 
+		check during calculations
+		Or produce a table in advance
+
+Sort lists In|Outcome by deadline date
+	Consider the processing times of each institution
+		When specified add appropriate time to the deadline
+			Real time in a tooltip
+
+Filter lists & reset
+	Category
+	Institution
+
+Graphs
+	Work with same options as list filters
+
+? Merged In|Outcome for Lbs on tab0
+	Easier to list separate values for In|Out
+	Option to limit by Number &| Time period
