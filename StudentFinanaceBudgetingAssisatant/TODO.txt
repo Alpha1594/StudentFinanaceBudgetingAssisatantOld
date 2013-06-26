@@ -9,7 +9,9 @@ Breakdown of finance for given time
 			X Term
 			X Quarterly
 			X Month
+				Consider future
 			Week
+				Mod to cnsider multiples years
 
 Repeating transactions
 	Store these together & 

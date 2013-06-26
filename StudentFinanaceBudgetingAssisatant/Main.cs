@@ -34,8 +34,8 @@ namespace StudentFinanaceBudgetingAssisatant
 
         #region SharedVaribles
         public enum Type { In, Out };
-        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy };
-        public RepeatFreq RF = RepeatFreq.Anualy;
+        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};
+        public RepeatFreq RF = RepeatFreq.Everything;
         string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };
         string[] CategoriesOut = { "Food", "Accomodation" };
         decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
@@ -160,7 +160,7 @@ namespace StudentFinanaceBudgetingAssisatant
 
 
         public Configuration RC = new Configuration();
-        
+
         #endregion
 
         #region In
@@ -492,12 +492,12 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void Total() // Calculates Income, Outcome & balance && Updates GUI
         {
+			#region Reset Values
             TotalIncome = 0;
             TotalOutcome = 0;
             Food = 0;
             Accomodation = 0;
             Balance = 0;
-
             InWeekly.Current = 0;
             InWeekly.Previous = 0;
             InMonthly.Current = 0;
@@ -508,7 +508,6 @@ namespace StudentFinanaceBudgetingAssisatant
             InQuarterly.Previous = 0;
             InAnualy.Current = 0;
             InAnualy.Previous = 0;
-
             OutWeekly.Current = 0;
             OutWeekly.Previous = 0;
             OutMonthly.Current = 0;
@@ -519,91 +518,43 @@ namespace StudentFinanaceBudgetingAssisatant
             OutTermly.Previous = 0;
             OutAnualy.Current = 0;
             OutAnualy.Previous = 0;
+			#endregion
 
-            #region Income
             foreach (Transactions T in Income)
             {
                 TotalIncome += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
 
-                if (T.Deadline.Month == DateTime.Today.Month)
-                {
-                    InMonthly.Current += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
-                }
-                else if (T.Deadline.Month < DateTime.Today.Month)
-                {
-                    InMonthly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
-                }
-                
-                if (GetTerm() == GetTerm(T.Deadline))
-                {
-                    InTermly.Current += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
-                }
-                else if (GetTerm() > GetTerm(T.Deadline))
-                {
-                    InTermly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
-                }
-
-                if (GetQuarter() == GetQuarter(T.Deadline))
-                {
-                    InQuarterly.Current += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
-                }
-                else if (GetQuarter() > GetQuarter(T.Deadline))
-                {
-                    InQuarterly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
-                }
+                QuarterTotal(T, true);
+                TermTotal(T, true);
+                MonthTotal(T, true);
+                YearTotal(T, true);
             }
-            #endregion
 
-            #region outcome
             foreach (Transactions U in Outcome)
             {
                 TotalOutcome += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
 
-                #region Month
-                if (U.Deadline.Month == DateTime.Today.Month)
-                {
-                    OutMonthly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                    switch (U.Category)
-                    {
-                        case "Food":
-                            Food += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                            break;
-                        case "Accomodation":
-                            Accomodation += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                            break;
-                        default:
-                            break;
-                    }
-                }
-                else if (U.Deadline.Month < DateTime.Today.Month)
-                {
-                    OutMonthly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                }
-                #endregion
-
-                #region Term
-                if (GetTerm() == GetTerm(U.Deadline))
-                {
-                     OutTermly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                }
-                else if (GetTerm() > GetTerm(U.Deadline))
-                {
-                    OutTermly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                }
-                
-
-                #endregion
-
-                #region Quarter
-                if (GetQuarter() == GetQuarter(U.Deadline))
-                {
-                    OutQuarterly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                }
-                else if (GetQuarter() > GetQuarter(U.Deadline))
-                    OutQuarterly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                #endregion
+                QuarterTotal(U, false);
+                TermTotal(U, false);
+                MonthTotal(U, false);
+                YearTotal(U, false);
             }
 
+            SetTotal();
+            In.Text = "£ " + TotalIncome.ToString();
+            LaIn.Text = "£ " + TotalIncome.ToString();
+
+            Out.Text = "£ " + TotalOutcome.ToString();
+            LaOut.Text = "£ " + TotalOutcome.ToString();
+            LaFood.Text = "£ " + Food.ToString();
+            LaAccomodation.Text = "£ " + Accomodation.ToString();
+
+            Balance = TotalIncome - TotalOutcome;
+            Resultant.Text = "£ " + Balance.ToString();
+        }
+
+		private void SetTotal()
+		{
             switch (RF){
                 case RepeatFreq.Weekly:
                 TotalIncome = InWeekly.Current;
@@ -629,20 +580,77 @@ namespace StudentFinanaceBudgetingAssisatant
                 TotalIncome = InAnualy.Current;
                 TotalOutcome = OutAnualy.Current;
                 return;
+
+				case RepeatFreq.Everything:
+				return;
              }
-                
-            #endregion
+		}
 
-            In.Text = "£ " + TotalIncome.ToString();
-            LaIn.Text = "£ " + TotalIncome.ToString();
+        #region Month
+        private void MonthTotal(Transactions LT, bool IsIn)
+        {
+            if (IsIn)
+            {
+                if (LT.Deadline.Month == DateTime.Today.Month)
+                {
+                    InMonthly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (LT.Deadline.Month < DateTime.Today.Month)
+                {
+                    InMonthly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+            else
+            {
+                if (LT.Deadline.Month == DateTime.Today.Month)
+                {
+                    OutMonthly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                    switch (LT.Category)
+                    {
+                        case "Food":
+                            Food += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                            break;
+                        case "Accomodation":
+                            Accomodation += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                else if (LT.Deadline.Month < DateTime.Today.Month)
+                {
+                    OutMonthly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+        }
 
-            Out.Text = "£ " + TotalOutcome.ToString();
-            LaOut.Text = "£ " + TotalOutcome.ToString();
-            LaFood.Text = "£ " + Food.ToString();
-            LaAccomodation.Text = "£ " + Accomodation.ToString();
+        #endregion
 
-            Balance = TotalIncome - TotalOutcome;
-            Resultant.Text = "£ " + Balance.ToString();
+        #region Term
+        private void TermTotal(Transactions LT, bool IsIn)
+        {
+            if (IsIn)
+            {
+                if (GetTerm() == GetTerm(LT.Deadline))
+                {
+                    InTermly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (GetTerm() > GetTerm(LT.Deadline))
+                {
+                    InTermly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+            else
+            {
+                if (GetTerm() == GetTerm(LT.Deadline))
+                {
+                    OutTermly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (GetTerm() > GetTerm(LT.Deadline))
+                {
+                    OutTermly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
         }
 
         private int GetTerm()
@@ -659,6 +667,32 @@ namespace StudentFinanaceBudgetingAssisatant
             if (Given < RC.StartT2) return 0;
             else if (Given < RC.StartT3) return 1;
             else return 2;
+        }
+        #endregion
+
+        #region Quarter
+        private void QuarterTotal(Transactions LT, bool IsIn)
+        {
+            if (IsIn)
+            {
+                if (GetQuarter() == GetQuarter(LT.Deadline))
+                {
+                    InQuarterly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (GetQuarter() > GetQuarter(LT.Deadline))
+                {
+                    InQuarterly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+            else
+            {
+                if (GetQuarter() == GetQuarter(LT.Deadline))
+                {
+                    OutQuarterly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (GetQuarter() > GetQuarter(LT.Deadline))
+                    OutQuarterly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+            }
         }
 
         private int GetQuarter()
@@ -712,6 +746,46 @@ namespace StudentFinanaceBudgetingAssisatant
                     return -1;
             }
         }
+        #endregion
+
+        #region Year
+        private void YearTotal(Transactions LT, bool IsIn)
+        {
+            if (IsIn)
+            {
+                if (GetYear() == GetYear(LT.Deadline))
+                {
+                    InAnualy.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (GetYear() > GetYear(LT.Deadline))
+                {
+                    InAnualy.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+            else
+            {
+                if (GetYear() == GetYear(LT.Deadline))
+                {
+                    OutAnualy.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (GetYear() > GetYear(LT.Deadline))
+                {
+                    OutAnualy.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+        }
+        
+        private int GetYear()
+        {
+            return DateTime.Today.Year;
+        }
+
+        private int GetYear(DateTime Given)
+        {
+            return Given.Year;
+        }
+
+        #endregion
 
         private void WriteToFile(object sender, EventArgs e)
         {
@@ -834,6 +908,13 @@ namespace StudentFinanaceBudgetingAssisatant
         private void RCMWeek_Click(object sender, EventArgs e)
         {
             RF = RepeatFreq.Weekly;
+            MessageBox.Show(RF.ToString());
+            Total();
+        }
+
+        private void RCMReset_Click(object sender, EventArgs e)
+        {
+            RF = RepeatFreq.Everything;
             MessageBox.Show(RF.ToString());
             Total();
         }

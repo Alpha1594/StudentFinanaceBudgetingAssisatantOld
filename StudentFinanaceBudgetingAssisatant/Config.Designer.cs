@@ -43,31 +43,33 @@
             this.DTT1E = new System.Windows.Forms.DateTimePicker();
             this.DTT1S = new System.Windows.Forms.DateTimePicker();
             this.TabStudentFinance = new System.Windows.Forms.TabPage();
-            this.BtnSaveConfig = new System.Windows.Forms.Button();
-            this.DTSFP1 = new System.Windows.Forms.DateTimePicker();
-            this.NuSFT1Grant = new System.Windows.Forms.NumericUpDown();
-            this.DTSFP2 = new System.Windows.Forms.DateTimePicker();
-            this.DTSFP3 = new System.Windows.Forms.DateTimePicker();
-            this.NuSFT1Loan = new System.Windows.Forms.NumericUpDown();
-            this.NuSFT2Loan = new System.Windows.Forms.NumericUpDown();
-            this.NuSFT2Grant = new System.Windows.Forms.NumericUpDown();
             this.NuSFT3Loan = new System.Windows.Forms.NumericUpDown();
             this.NuSFT3Grant = new System.Windows.Forms.NumericUpDown();
+            this.NuSFT2Loan = new System.Windows.Forms.NumericUpDown();
+            this.NuSFT2Grant = new System.Windows.Forms.NumericUpDown();
+            this.NuSFT1Loan = new System.Windows.Forms.NumericUpDown();
+            this.DTSFP3 = new System.Windows.Forms.DateTimePicker();
+            this.DTSFP2 = new System.Windows.Forms.DateTimePicker();
+            this.NuSFT1Grant = new System.Windows.Forms.NumericUpDown();
+            this.DTSFP1 = new System.Windows.Forms.DateTimePicker();
+            this.BtnSaveConfig = new System.Windows.Forms.Button();
+            this.TabBursary = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.TabDates.SuspendLayout();
             this.TabStudentFinance.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Loan)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Grant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT3Loan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT3Grant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Loan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Grant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.TabDates);
             this.tabControl1.Controls.Add(this.TabStudentFinance);
+            this.tabControl1.Controls.Add(this.TabBursary);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -211,64 +213,33 @@
             this.TabStudentFinance.Text = "StudentFinance";
             this.TabStudentFinance.UseVisualStyleBackColor = true;
             // 
-            // BtnSaveConfig
+            // NuSFT3Loan
             // 
-            this.BtnSaveConfig.Location = new System.Drawing.Point(206, 236);
-            this.BtnSaveConfig.Name = "BtnSaveConfig";
-            this.BtnSaveConfig.Size = new System.Drawing.Size(75, 23);
-            this.BtnSaveConfig.TabIndex = 6;
-            this.BtnSaveConfig.Text = "BtnSaveConfig";
-            this.BtnSaveConfig.UseVisualStyleBackColor = true;
-            this.BtnSaveConfig.Click += new System.EventHandler(this.BtnSaveConfig_Click);
-            // 
-            // DTSFP1
-            // 
-            this.DTSFP1.Location = new System.Drawing.Point(3, 6);
-            this.DTSFP1.Name = "DTSFP1";
-            this.DTSFP1.Size = new System.Drawing.Size(131, 20);
-            this.DTSFP1.TabIndex = 0;
-            // 
-            // NuSFT1Grant
-            // 
-            this.NuSFT1Grant.DecimalPlaces = 2;
-            this.NuSFT1Grant.Location = new System.Drawing.Point(3, 32);
-            this.NuSFT1Grant.Maximum = new decimal(new int[] {
+            this.NuSFT3Loan.DecimalPlaces = 2;
+            this.NuSFT3Loan.Location = new System.Drawing.Point(148, 173);
+            this.NuSFT3Loan.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.NuSFT1Grant.Name = "NuSFT1Grant";
-            this.NuSFT1Grant.Size = new System.Drawing.Size(120, 20);
-            this.NuSFT1Grant.TabIndex = 1;
-            this.NuSFT1Grant.ThousandsSeparator = true;
+            this.NuSFT3Loan.Name = "NuSFT3Loan";
+            this.NuSFT3Loan.Size = new System.Drawing.Size(120, 20);
+            this.NuSFT3Loan.TabIndex = 8;
+            this.NuSFT3Loan.ThousandsSeparator = true;
             // 
-            // DTSFP2
+            // NuSFT3Grant
             // 
-            this.DTSFP2.Location = new System.Drawing.Point(3, 77);
-            this.DTSFP2.Name = "DTSFP2";
-            this.DTSFP2.Size = new System.Drawing.Size(131, 20);
-            this.DTSFP2.TabIndex = 2;
-            // 
-            // DTSFP3
-            // 
-            this.DTSFP3.Location = new System.Drawing.Point(0, 147);
-            this.DTSFP3.Name = "DTSFP3";
-            this.DTSFP3.Size = new System.Drawing.Size(131, 20);
-            this.DTSFP3.TabIndex = 3;
-            // 
-            // NuSFT1Loan
-            // 
-            this.NuSFT1Loan.DecimalPlaces = 2;
-            this.NuSFT1Loan.Location = new System.Drawing.Point(148, 32);
-            this.NuSFT1Loan.Maximum = new decimal(new int[] {
+            this.NuSFT3Grant.DecimalPlaces = 2;
+            this.NuSFT3Grant.Location = new System.Drawing.Point(3, 173);
+            this.NuSFT3Grant.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.NuSFT1Loan.Name = "NuSFT1Loan";
-            this.NuSFT1Loan.Size = new System.Drawing.Size(120, 20);
-            this.NuSFT1Loan.TabIndex = 4;
-            this.NuSFT1Loan.ThousandsSeparator = true;
+            this.NuSFT3Grant.Name = "NuSFT3Grant";
+            this.NuSFT3Grant.Size = new System.Drawing.Size(120, 20);
+            this.NuSFT3Grant.TabIndex = 7;
+            this.NuSFT3Grant.ThousandsSeparator = true;
             // 
             // NuSFT2Loan
             // 
@@ -298,33 +269,74 @@
             this.NuSFT2Grant.TabIndex = 5;
             this.NuSFT2Grant.ThousandsSeparator = true;
             // 
-            // NuSFT3Loan
+            // NuSFT1Loan
             // 
-            this.NuSFT3Loan.DecimalPlaces = 2;
-            this.NuSFT3Loan.Location = new System.Drawing.Point(148, 173);
-            this.NuSFT3Loan.Maximum = new decimal(new int[] {
+            this.NuSFT1Loan.DecimalPlaces = 2;
+            this.NuSFT1Loan.Location = new System.Drawing.Point(148, 32);
+            this.NuSFT1Loan.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.NuSFT3Loan.Name = "NuSFT3Loan";
-            this.NuSFT3Loan.Size = new System.Drawing.Size(120, 20);
-            this.NuSFT3Loan.TabIndex = 8;
-            this.NuSFT3Loan.ThousandsSeparator = true;
+            this.NuSFT1Loan.Name = "NuSFT1Loan";
+            this.NuSFT1Loan.Size = new System.Drawing.Size(120, 20);
+            this.NuSFT1Loan.TabIndex = 4;
+            this.NuSFT1Loan.ThousandsSeparator = true;
             // 
-            // NuSFT3Grant
+            // DTSFP3
             // 
-            this.NuSFT3Grant.DecimalPlaces = 2;
-            this.NuSFT3Grant.Location = new System.Drawing.Point(3, 173);
-            this.NuSFT3Grant.Maximum = new decimal(new int[] {
+            this.DTSFP3.Location = new System.Drawing.Point(0, 147);
+            this.DTSFP3.Name = "DTSFP3";
+            this.DTSFP3.Size = new System.Drawing.Size(131, 20);
+            this.DTSFP3.TabIndex = 3;
+            // 
+            // DTSFP2
+            // 
+            this.DTSFP2.Location = new System.Drawing.Point(3, 77);
+            this.DTSFP2.Name = "DTSFP2";
+            this.DTSFP2.Size = new System.Drawing.Size(131, 20);
+            this.DTSFP2.TabIndex = 2;
+            // 
+            // NuSFT1Grant
+            // 
+            this.NuSFT1Grant.DecimalPlaces = 2;
+            this.NuSFT1Grant.Location = new System.Drawing.Point(3, 32);
+            this.NuSFT1Grant.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.NuSFT3Grant.Name = "NuSFT3Grant";
-            this.NuSFT3Grant.Size = new System.Drawing.Size(120, 20);
-            this.NuSFT3Grant.TabIndex = 7;
-            this.NuSFT3Grant.ThousandsSeparator = true;
+            this.NuSFT1Grant.Name = "NuSFT1Grant";
+            this.NuSFT1Grant.Size = new System.Drawing.Size(120, 20);
+            this.NuSFT1Grant.TabIndex = 1;
+            this.NuSFT1Grant.ThousandsSeparator = true;
+            // 
+            // DTSFP1
+            // 
+            this.DTSFP1.Location = new System.Drawing.Point(3, 6);
+            this.DTSFP1.Name = "DTSFP1";
+            this.DTSFP1.Size = new System.Drawing.Size(131, 20);
+            this.DTSFP1.TabIndex = 0;
+            // 
+            // BtnSaveConfig
+            // 
+            this.BtnSaveConfig.Location = new System.Drawing.Point(206, 236);
+            this.BtnSaveConfig.Name = "BtnSaveConfig";
+            this.BtnSaveConfig.Size = new System.Drawing.Size(75, 23);
+            this.BtnSaveConfig.TabIndex = 6;
+            this.BtnSaveConfig.Text = "BtnSaveConfig";
+            this.BtnSaveConfig.UseVisualStyleBackColor = true;
+            this.BtnSaveConfig.Click += new System.EventHandler(this.BtnSaveConfig_Click);
+            // 
+            // TabBursary
+            // 
+            this.TabBursary.Location = new System.Drawing.Point(4, 22);
+            this.TabBursary.Name = "TabBursary";
+            this.TabBursary.Padding = new System.Windows.Forms.Padding(3);
+            this.TabBursary.Size = new System.Drawing.Size(277, 204);
+            this.TabBursary.TabIndex = 2;
+            this.TabBursary.Text = "Bursary";
+            this.TabBursary.UseVisualStyleBackColor = true;
             // 
             // Config
             // 
@@ -339,12 +351,12 @@
             this.TabDates.ResumeLayout(false);
             this.TabDates.PerformLayout();
             this.TabStudentFinance.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Loan)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Grant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT3Loan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT3Grant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Loan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Grant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -376,5 +388,6 @@
         private System.Windows.Forms.DateTimePicker DTSFP2;
         private System.Windows.Forms.NumericUpDown NuSFT1Grant;
         private System.Windows.Forms.DateTimePicker DTSFP1;
+        private System.Windows.Forms.TabPage TabBursary;
     }
 }
