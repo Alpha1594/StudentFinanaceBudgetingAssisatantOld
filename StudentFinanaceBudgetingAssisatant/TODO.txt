@@ -2,7 +2,14 @@ Breakdown of finance for given time
 	Will be dependant on known variables 
 		Term times
 		What day to start week on
-		Options to include & ignore previous time
+		? Options to include & ignore previous time
+			Year
+				Calendar
+				Academic
+			X Term
+			X Quarterly
+			X Month
+			Week
 
 Repeating transactions
 	Store these together & 
@@ -24,3 +31,5 @@ Graphs
 ? Merged In|Outcome for Lbs on tab0
 	Easier to list separate values for In|Out
 	Option to limit by Number &| Time period
+
+RC to include SF Loans & grants termly breakdown by type & receiving dates

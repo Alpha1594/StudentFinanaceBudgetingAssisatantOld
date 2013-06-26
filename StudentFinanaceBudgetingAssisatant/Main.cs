@@ -104,6 +104,7 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Current = Current;
             }
         }
+
         public TotalPerTime InAnualy;
         public TotalPerTime InTermly;
         public TotalPerTime InQuarterly;
@@ -124,8 +125,20 @@ namespace StudentFinanaceBudgetingAssisatant
             public DateTime EndT2;
             public DateTime StartT3;
             public DateTime EndT3;
+            public DateTime Trans1Date;
+            public decimal Trans1Grant;
+            public decimal Trans1Loan;
+            public DateTime Trans2Date;
+            public decimal Trans2Grant;
+            public decimal Trans2Loan;
+            public DateTime Trans3Date;
+            public decimal Trans3Grant;
+            public decimal Trans3Loan;
 
-            public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3, DateTime ET3)
+            public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,
+                DateTime ET3, DateTime Trans1Date, decimal Trans1Grant, decimal Trans1Loan,
+             DateTime Trans2Date, decimal Trans2Grant, decimal Trans2Loan, DateTime Trans3Date,
+             decimal Trans3Grant, decimal Trans3Loan)
             {
                 this.StartT1 = ST1;
                 this.EndT1 = ET1;
@@ -133,8 +146,18 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.EndT2 = ET2;
                 this.StartT3 = ST3;
                 this.EndT3 = ET3;
+                this.Trans1Date = Trans1Date;
+                this.Trans1Grant = Trans1Grant;
+                this.Trans1Loan = Trans1Loan;
+                this.Trans2Date = Trans2Date;
+                this.Trans2Grant = Trans2Grant;
+                this.Trans2Loan = Trans2Loan;
+                this.Trans3Date = Trans3Date;
+                this.Trans3Grant = Trans3Grant;
+                this.Trans3Loan = Trans3Loan;
             }
         }
+
 
         public Configuration RC = new Configuration();
         
@@ -474,11 +497,30 @@ namespace StudentFinanaceBudgetingAssisatant
             Food = 0;
             Accomodation = 0;
             Balance = 0;
+
+            InWeekly.Current = 0;
+            InWeekly.Previous = 0;
             InMonthly.Current = 0;
             InMonthly.Previous = 0;
+            InTermly.Current = 0;
+            InTermly.Previous = 0;
+            InQuarterly.Current = 0;
+            InQuarterly.Previous = 0;
+            InAnualy.Current = 0;
+            InAnualy.Previous = 0;
+
+            OutWeekly.Current = 0;
+            OutWeekly.Previous = 0;
             OutMonthly.Current = 0;
             OutMonthly.Previous = 0;
+            OutQuarterly.Current = 0;
+            OutQuarterly.Previous = 0;
+            OutTermly.Current = 0;
+            OutTermly.Previous = 0;
+            OutAnualy.Current = 0;
+            OutAnualy.Previous = 0;
 
+            #region Income
             foreach (Transactions T in Income)
             {
                 TotalIncome += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
@@ -491,13 +533,33 @@ namespace StudentFinanaceBudgetingAssisatant
                 {
                     InMonthly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
                 }
-            }
+                
+                if (GetTerm() == GetTerm(T.Deadline))
+                {
+                    InTermly.Current += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+                }
+                else if (GetTerm() > GetTerm(T.Deadline))
+                {
+                    InTermly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+                }
 
+                if (GetQuarter() == GetQuarter(T.Deadline))
+                {
+                    InQuarterly.Current += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+                }
+                else if (GetQuarter() > GetQuarter(T.Deadline))
+                {
+                    InQuarterly.Previous += (T.AmountReal == 0 ? T.AmountPre : T.AmountReal);
+                }
+            }
+            #endregion
+
+            #region outcome
             foreach (Transactions U in Outcome)
             {
                 TotalOutcome += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
-                
 
+                #region Month
                 if (U.Deadline.Month == DateTime.Today.Month)
                 {
                     OutMonthly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
@@ -517,13 +579,59 @@ namespace StudentFinanaceBudgetingAssisatant
                 {
                     OutMonthly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
                 }
+                #endregion
+
+                #region Term
+                if (GetTerm() == GetTerm(U.Deadline))
+                {
+                     OutTermly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                }
+                else if (GetTerm() > GetTerm(U.Deadline))
+                {
+                    OutTermly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                }
+                
+
+                #endregion
+
+                #region Quarter
+                if (GetQuarter() == GetQuarter(U.Deadline))
+                {
+                    OutQuarterly.Current += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                }
+                else if (GetQuarter() > GetQuarter(U.Deadline))
+                    OutQuarterly.Previous += (U.AmountReal == 0 ? U.AmountPre : U.AmountReal);
+                #endregion
             }
 
-            if (RF == RepeatFreq.Monthly)
-            {
+            switch (RF){
+                case RepeatFreq.Weekly:
+                TotalIncome = InWeekly.Current;
+                TotalOutcome = OutWeekly.Current;
+                return;
+
+                case RepeatFreq.Monthly:
                 TotalIncome = InMonthly.Current;
                 TotalOutcome = OutMonthly.Current;
-            }
+                return;
+
+                case RepeatFreq.Termly:
+                TotalIncome = InMonthly.Current;
+                TotalOutcome = OutMonthly.Current;
+                return;
+
+                case RepeatFreq.Quarterly:
+                TotalIncome = InQuarterly.Current;
+                TotalOutcome = OutQuarterly.Current;
+                return;
+
+                case RepeatFreq.Anualy:
+                TotalIncome = InAnualy.Current;
+                TotalOutcome = OutAnualy.Current;
+                return;
+             }
+                
+            #endregion
 
             In.Text = "£ " + TotalIncome.ToString();
             LaIn.Text = "£ " + TotalIncome.ToString();
@@ -535,6 +643,74 @@ namespace StudentFinanaceBudgetingAssisatant
 
             Balance = TotalIncome - TotalOutcome;
             Resultant.Text = "£ " + Balance.ToString();
+        }
+
+        private int GetTerm()
+        {
+            DateTime Today = DateTime.Today;
+
+            if (Today < RC.StartT2) return 0;
+            else if (Today < RC.StartT3) return 1;
+            else return 2;
+        }
+
+        private int GetTerm(DateTime Given)
+        {
+            if (Given < RC.StartT2) return 0;
+            else if (Given < RC.StartT3) return 1;
+            else return 2;
+        }
+
+        private int GetQuarter()
+        {
+            int ThisMonth = DateTime.Today.Month;
+            switch (ThisMonth)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    return 0;
+                case 4:
+                case 5:
+                case 6:
+                    return 1;
+                case 7:
+                case 8:
+                case 9:
+                    return 2;
+                case 10:
+                case 11:
+                case 12:
+                    return 3;
+                default:
+                    return -1;
+            }
+        }
+
+        private int GetQuarter(DateTime Given)
+        {
+            int Month = Given.Month;
+            switch (Month)
+            {
+                case 1:
+                case 2:
+                case 3:
+                    return 0;
+                case 4:
+                case 5:
+                case 6:
+                    return 1;
+                case 7:
+                case 8:
+                case 9:
+                    return 2;
+                case 10:
+                case 11:
+                case 12:
+                    return 3;
+                default:
+                    return -1;
+            }
         }
 
         private void WriteToFile(object sender, EventArgs e)
