@@ -37,6 +37,7 @@
             this.quarterlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weeklyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Resultant = new System.Windows.Forms.Label();
             this.RCMTime = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RCMAnual = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +45,7 @@
             this.RCMQuarter = new System.Windows.Forms.ToolStripMenuItem();
             this.RCMMonth = new System.Windows.Forms.ToolStripMenuItem();
             this.RCMWeek = new System.Windows.Forms.ToolStripMenuItem();
+            this.RCMReset = new System.Windows.Forms.ToolStripMenuItem();
             this.In = new System.Windows.Forms.Label();
             this.Out = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -86,8 +88,8 @@
             this.TBOutName = new System.Windows.Forms.TextBox();
             this.LaOut = new System.Windows.Forms.Label();
             this.LBOut = new System.Windows.Forms.ListBox();
-            this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.RCMReset = new System.Windows.Forms.ToolStripMenuItem();
+            this.CBInCompany = new System.Windows.Forms.ComboBox();
+            this.CBOutCompany = new System.Windows.Forms.ComboBox();
             this.MainMenu.SuspendLayout();
             this.RCMTime.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -172,6 +174,14 @@
             this.weeklyToolStripMenuItem.Text = "&Weekly";
             this.weeklyToolStripMenuItem.Click += new System.EventHandler(this.RCMWeek_Click);
             // 
+            // resetToolStripMenuItem
+            // 
+            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            this.resetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.resetToolStripMenuItem.Text = "&Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.RCMReset_Click);
+            // 
             // Resultant
             // 
             this.Resultant.AutoSize = true;
@@ -237,6 +247,14 @@
             this.RCMWeek.Size = new System.Drawing.Size(179, 22);
             this.RCMWeek.Text = "RCM&Week";
             this.RCMWeek.Click += new System.EventHandler(this.RCMWeek_Click);
+            // 
+            // RCMReset
+            // 
+            this.RCMReset.Name = "RCMReset";
+            this.RCMReset.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
+            this.RCMReset.Size = new System.Drawing.Size(179, 22);
+            this.RCMReset.Text = "RCMReset";
+            this.RCMReset.Click += new System.EventHandler(this.RCMReset_Click);
             // 
             // In
             // 
@@ -306,6 +324,7 @@
             // 
             // TabIn
             // 
+            this.TabIn.Controls.Add(this.CBInCompany);
             this.TabIn.Controls.Add(this.BtnResetTabIn);
             this.TabIn.Controls.Add(this.CBInCategory);
             this.TabIn.Controls.Add(this.CBRepeatFreqIn);
@@ -502,6 +521,7 @@
             // 
             // TabOut
             // 
+            this.TabOut.Controls.Add(this.CBOutCompany);
             this.TabOut.Controls.Add(this.BtnResetTabOut);
             this.TabOut.Controls.Add(this.LaAccomodation);
             this.TabOut.Controls.Add(this.LaFood);
@@ -713,21 +733,21 @@
             this.LBOut.TabIndex = 1;
             this.LBOut.SelectedIndexChanged += new System.EventHandler(this.LBOut_SelectedIndexChanged);
             // 
-            // resetToolStripMenuItem
+            // CBInCompany
             // 
-            this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.resetToolStripMenuItem.Text = "&Reset";
-            this.resetToolStripMenuItem.Click += new System.EventHandler(this.RCMReset_Click);
+            this.CBInCompany.FormattingEnabled = true;
+            this.CBInCompany.Location = new System.Drawing.Point(458, 11);
+            this.CBInCompany.Name = "CBInCompany";
+            this.CBInCompany.Size = new System.Drawing.Size(121, 21);
+            this.CBInCompany.TabIndex = 17;
             // 
-            // RCMReset
+            // CBOutCompany
             // 
-            this.RCMReset.Name = "RCMReset";
-            this.RCMReset.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.RCMReset.Size = new System.Drawing.Size(179, 22);
-            this.RCMReset.Text = "RCMReset";
-            this.RCMReset.Click += new System.EventHandler(this.RCMReset_Click);
+            this.CBOutCompany.FormattingEnabled = true;
+            this.CBOutCompany.Location = new System.Drawing.Point(458, 12);
+            this.CBOutCompany.Name = "CBOutCompany";
+            this.CBOutCompany.Size = new System.Drawing.Size(121, 21);
+            this.CBOutCompany.TabIndex = 31;
             // 
             // Main
             // 
@@ -819,6 +839,8 @@
         private System.Windows.Forms.Button BtnResetTabOut;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem RCMReset;
+        private System.Windows.Forms.ComboBox CBInCompany;
+        private System.Windows.Forms.ComboBox CBOutCompany;
     }
 }
 

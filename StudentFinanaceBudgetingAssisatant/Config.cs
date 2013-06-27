@@ -44,11 +44,13 @@ namespace StudentFinanaceBudgetingAssisatant
             public DateTime Trans3Date;
             public decimal Trans3Grant;
             public decimal Trans3Loan;
+            public decimal BursaryAmount;
+            public string BursaryPaymentFrequency;
 
             public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,
                 DateTime ET3, DateTime Trans1Date, decimal Trans1Grant, decimal Trans1Loan,
              DateTime Trans2Date, decimal Trans2Grant, decimal Trans2Loan, DateTime Trans3Date,
-             decimal Trans3Grant, decimal Trans3Loan)
+             decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency)
             {
                 this.StartT1 = ST1;
                 this.EndT1 = ET1;
@@ -65,6 +67,8 @@ namespace StudentFinanaceBudgetingAssisatant
 				this.Trans3Date = Trans3Date;
 				this.Trans3Grant = Trans3Grant;
 				this.Trans3Loan = Trans3Loan;
+                this.BursaryAmount = BursaryAmount;
+                this.BursaryPaymentFrequency = BursaryPaymentFrequency;
             }
         }
 
@@ -74,7 +78,8 @@ namespace StudentFinanaceBudgetingAssisatant
         {
             RC = new Configuration(DTT1S.Value, DTT1E.Value, DTT2S.Value, DTT2E.Value, DTT3S.Value,
                 DTT3E.Value, DTSFP1.Value, NuSFT1Grant.Value, NuSFT1Loan.Value, DTSFP2.Value,
-                NuSFT2Grant.Value, NuSFT2Loan.Value, DTSFP3.Value, NuSFT3Grant.Value, NuSFT3Loan.Value );
+                NuSFT2Grant.Value, NuSFT2Loan.Value, DTSFP3.Value, NuSFT3Grant.Value, NuSFT3Loan.Value,
+                NuBA.Value, CBBF.Text);
             XmlSerializer XSR = new XmlSerializer(typeof(Configuration));
             FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Create);
             XSR.Serialize(ConfigStream, RC);
@@ -109,6 +114,8 @@ namespace StudentFinanaceBudgetingAssisatant
 				DTSFP3.Value = RC.Trans3Date;
 				NuSFT3Grant.Value = RC.Trans3Grant;
                 NuSFT3Loan.Value = RC.Trans3Loan;
+                NuBA.Value = RC.BursaryAmount;
+                CBBF.Text = RC.BursaryPaymentFrequency;
             }
             else
             {
@@ -116,8 +123,6 @@ namespace StudentFinanaceBudgetingAssisatant
                 FS.Close();
                 return;
             }
-
-
         }
     }
 }

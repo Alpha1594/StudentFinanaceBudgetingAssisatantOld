@@ -36,6 +36,7 @@ namespace StudentFinanaceBudgetingAssisatant
         public enum Type { In, Out };
         public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};
         public RepeatFreq RF = RepeatFreq.Everything;
+        
         string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };
         string[] CategoriesOut = { "Food", "Accomodation" };
         decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
@@ -44,12 +45,12 @@ namespace StudentFinanaceBudgetingAssisatant
         public decimal Food;
         public decimal Accomodation;
         public decimal Balance;
-        public StoredData SD;
         public int LimNextTranaction = 10;
         public int LimTransactionsToProcess = 10;
 
         public struct Transactions{
             public string Name;
+            public string Company;
             public string Category;
             public string Type;
             public decimal AmountPre;
@@ -63,11 +64,12 @@ namespace StudentFinanaceBudgetingAssisatant
             public DateTime RepeatEnd;
             public string RepeatFreq;
 
-            public Transactions(string Name, string Category, string Type, decimal AmountPre, decimal AmountReal,
+            public Transactions(string Name, string Company, string Category, string Type, decimal AmountPre, decimal AmountReal,
                 bool Completed, string[] Comment, DateTime Deadline, DateTime ProcessedOn, bool Repeat, 
                 DateTime RepeatStart, DateTime RepeatEnd, string RepeatFreq)
             {
 				this.Name = Name;
+                this.Company = Company;
 				this.Category = Category;
                 this.Type = Type;
 				this.AmountPre = AmountPre;
@@ -82,6 +84,8 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.RepeatFreq = RepeatFreq;
             }
         }
+        public List<Transactions> Income = new List<Transactions>();
+        public List<Transactions> Outcome = new List<Transactions>();
 
         public struct StoredData
         {
@@ -93,6 +97,7 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Out = Outcome;
             }
         }
+        public StoredData SD;
 
         public struct TotalPerTime
         {
@@ -104,7 +109,6 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Current = Current;
             }
         }
-
         public TotalPerTime InAnualy;
         public TotalPerTime InTermly;
         public TotalPerTime InQuarterly;
@@ -134,11 +138,13 @@ namespace StudentFinanaceBudgetingAssisatant
             public DateTime Trans3Date;
             public decimal Trans3Grant;
             public decimal Trans3Loan;
+            public decimal BursaryAmount;
+            public string BursaryPaymentFrequency;
 
             public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,
                 DateTime ET3, DateTime Trans1Date, decimal Trans1Grant, decimal Trans1Loan,
              DateTime Trans2Date, decimal Trans2Grant, decimal Trans2Loan, DateTime Trans3Date,
-             decimal Trans3Grant, decimal Trans3Loan)
+             decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency)
             {
                 this.StartT1 = ST1;
                 this.EndT1 = ET1;
@@ -155,17 +161,22 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Trans3Date = Trans3Date;
                 this.Trans3Grant = Trans3Grant;
                 this.Trans3Loan = Trans3Loan;
+                this.BursaryAmount = BursaryAmount;
+                this.BursaryPaymentFrequency = BursaryPaymentFrequency;
             }
         }
-
-
         public Configuration RC = new Configuration();
 
+        public struct Company
+        {
+            public string Name;
+            public string DefaultCategory;
+            public int ProcessingTime;
+            public string[] Comments;
+        }
         #endregion
 
         #region In
-        public List<Transactions> Income = new List<Transactions>();
-
         private void GotoTabIn(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 1;
@@ -207,7 +218,7 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void BtnAddIn_Click(object sender, EventArgs e)
         {
-            Transactions temp = new Transactions(TBInName.Text, CBInCategory.Text, Type.In.ToString(),
+            Transactions temp = new Transactions(TBInName.Text, CBInCompany.Text, CBInCategory.Text, Type.In.ToString(),
                 NuInAmountPre.Value, (DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
                 DTInDeadline.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
                 CBInRepeat.Checked, DTRepeatStartIn.Value, DTRepeatEndIn.Value,
@@ -256,6 +267,7 @@ namespace StudentFinanaceBudgetingAssisatant
             else
             {
                 TBInName.Text = Income[index].Name;
+                CBInCompany.Text = Income[index].Company;
                 CBInCategory.Text = Income[index].Category;
                 NuInAmountPre.Value = Income[index].AmountPre;
                 DTInDeadline.Value = Income[index].Deadline;
@@ -310,8 +322,6 @@ namespace StudentFinanaceBudgetingAssisatant
         #endregion
 
         #region Out
-        public List<Transactions> Outcome = new List<Transactions>();
-
         private void GotoTabOut(object sender, EventArgs e)
         {
             tabControl1.SelectedIndex = 2;
@@ -353,8 +363,9 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void BtnAddOut_Click(object sender, EventArgs e)
         {
-            Transactions temp = new Transactions(TBOutName.Text, CBOutCategory.Text, Type.Out.ToString(),
-                NuOutAmountPre.Value, (CBOutCompleted.Checked == true ? NuOutAmountReal.Value : 0),
+            Transactions temp = new Transactions(TBOutName.Text, CBOutCompany.Text, CBOutCategory.Text,
+                Type.Out.ToString(), NuOutAmountPre.Value, 
+                (CBOutCompleted.Checked == true ? NuOutAmountReal.Value : 0),
                 CBOutRepeat.Checked, TBOutComment.Lines, DTOutDeadline.Value, DTOutReal.Value,
                 CBOutRepeat.Checked, DTRepeatStartOut.Value, DTRepeatEndOut.Value,
                 CBRepeatFreqIn.Text);
@@ -419,6 +430,7 @@ namespace StudentFinanaceBudgetingAssisatant
             else
             {
                 TBOutName.Text = Outcome[index].Name;
+                CBOutCompany.Text = Outcome[index].Company;
                 CBOutCategory.Text = Outcome[index].Category;
                 NuOutAmountPre.Value = Outcome[index].AmountPre;
                 DTOutDeadline.Value = Outcome[index].Deadline;
@@ -475,18 +487,6 @@ namespace StudentFinanaceBudgetingAssisatant
 		#region Common
         private Color TxtFormat(decimal Input)
 		{
-            //if (Input < 0)
-            //{
-            //    return Color.Red;
-            //}
-            //else if (Input >= BreakEvenThreshold)
-            //{
-            //    return Color.Green;
-            //}
-            //else
-            //{
-            //    return Color.Black;
-            //}
             return Input < 0 ? Color.Red : Input >= BreakEvenThreshold ? Color.Green : Color.Black;
         }
 

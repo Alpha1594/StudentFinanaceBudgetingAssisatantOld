@@ -52,8 +52,10 @@
             this.DTSFP2 = new System.Windows.Forms.DateTimePicker();
             this.NuSFT1Grant = new System.Windows.Forms.NumericUpDown();
             this.DTSFP1 = new System.Windows.Forms.DateTimePicker();
-            this.BtnSaveConfig = new System.Windows.Forms.Button();
             this.TabBursary = new System.Windows.Forms.TabPage();
+            this.BtnSaveConfig = new System.Windows.Forms.Button();
+            this.NuBA = new System.Windows.Forms.NumericUpDown();
+            this.CBBF = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.TabDates.SuspendLayout();
             this.TabStudentFinance.SuspendLayout();
@@ -63,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Grant)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).BeginInit();
+            this.TabBursary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NuBA)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -318,6 +322,18 @@
             this.DTSFP1.Size = new System.Drawing.Size(131, 20);
             this.DTSFP1.TabIndex = 0;
             // 
+            // TabBursary
+            // 
+            this.TabBursary.Controls.Add(this.CBBF);
+            this.TabBursary.Controls.Add(this.NuBA);
+            this.TabBursary.Location = new System.Drawing.Point(4, 22);
+            this.TabBursary.Name = "TabBursary";
+            this.TabBursary.Padding = new System.Windows.Forms.Padding(3);
+            this.TabBursary.Size = new System.Drawing.Size(277, 204);
+            this.TabBursary.TabIndex = 2;
+            this.TabBursary.Text = "Bursary";
+            this.TabBursary.UseVisualStyleBackColor = true;
+            // 
             // BtnSaveConfig
             // 
             this.BtnSaveConfig.Location = new System.Drawing.Point(206, 236);
@@ -328,15 +344,30 @@
             this.BtnSaveConfig.UseVisualStyleBackColor = true;
             this.BtnSaveConfig.Click += new System.EventHandler(this.BtnSaveConfig_Click);
             // 
-            // TabBursary
+            // NuBA
             // 
-            this.TabBursary.Location = new System.Drawing.Point(4, 22);
-            this.TabBursary.Name = "TabBursary";
-            this.TabBursary.Padding = new System.Windows.Forms.Padding(3);
-            this.TabBursary.Size = new System.Drawing.Size(277, 204);
-            this.TabBursary.TabIndex = 2;
-            this.TabBursary.Text = "Bursary";
-            this.TabBursary.UseVisualStyleBackColor = true;
+            this.NuBA.DecimalPlaces = 2;
+            this.NuBA.Location = new System.Drawing.Point(3, 6);
+            this.NuBA.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NuBA.Name = "NuBA";
+            this.NuBA.Size = new System.Drawing.Size(120, 20);
+            this.NuBA.TabIndex = 2;
+            this.NuBA.ThousandsSeparator = true;
+            // 
+            // CBBF
+            // 
+            this.CBBF.FormattingEnabled = true;
+            this.CBBF.Items.AddRange(new object[] {
+            "Anual",
+            "One-off"});
+            this.CBBF.Location = new System.Drawing.Point(129, 6);
+            this.CBBF.Name = "CBBF";
+            this.CBBF.Size = new System.Drawing.Size(121, 21);
+            this.CBBF.TabIndex = 3;
             // 
             // Config
             // 
@@ -357,6 +388,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT2Grant)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).EndInit();
+            this.TabBursary.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NuBA)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -389,5 +422,7 @@
         private System.Windows.Forms.NumericUpDown NuSFT1Grant;
         private System.Windows.Forms.DateTimePicker DTSFP1;
         private System.Windows.Forms.TabPage TabBursary;
+        private System.Windows.Forms.ComboBox CBBF;
+        private System.Windows.Forms.NumericUpDown NuBA;
     }
 }
