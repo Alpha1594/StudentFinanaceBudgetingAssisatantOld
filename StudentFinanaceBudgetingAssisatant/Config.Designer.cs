@@ -53,9 +53,11 @@
             this.NuSFT1Grant = new System.Windows.Forms.NumericUpDown();
             this.DTSFP1 = new System.Windows.Forms.DateTimePicker();
             this.TabBursary = new System.Windows.Forms.TabPage();
-            this.BtnSaveConfig = new System.Windows.Forms.Button();
-            this.NuBA = new System.Windows.Forms.NumericUpDown();
             this.CBBF = new System.Windows.Forms.ComboBox();
+            this.NuBA = new System.Windows.Forms.NumericUpDown();
+            this.BtnSaveConfig = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.CBWeekStarts = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.TabDates.SuspendLayout();
             this.TabStudentFinance.SuspendLayout();
@@ -67,6 +69,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).BeginInit();
             this.TabBursary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NuBA)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -74,6 +77,7 @@
             this.tabControl1.Controls.Add(this.TabDates);
             this.tabControl1.Controls.Add(this.TabStudentFinance);
             this.tabControl1.Controls.Add(this.TabBursary);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -334,15 +338,16 @@
             this.TabBursary.Text = "Bursary";
             this.TabBursary.UseVisualStyleBackColor = true;
             // 
-            // BtnSaveConfig
+            // CBBF
             // 
-            this.BtnSaveConfig.Location = new System.Drawing.Point(206, 236);
-            this.BtnSaveConfig.Name = "BtnSaveConfig";
-            this.BtnSaveConfig.Size = new System.Drawing.Size(75, 23);
-            this.BtnSaveConfig.TabIndex = 6;
-            this.BtnSaveConfig.Text = "BtnSaveConfig";
-            this.BtnSaveConfig.UseVisualStyleBackColor = true;
-            this.BtnSaveConfig.Click += new System.EventHandler(this.BtnSaveConfig_Click);
+            this.CBBF.FormattingEnabled = true;
+            this.CBBF.Items.AddRange(new object[] {
+            "Anual",
+            "One-off"});
+            this.CBBF.Location = new System.Drawing.Point(129, 6);
+            this.CBBF.Name = "CBBF";
+            this.CBBF.Size = new System.Drawing.Size(121, 21);
+            this.CBBF.TabIndex = 3;
             // 
             // NuBA
             // 
@@ -358,16 +363,34 @@
             this.NuBA.TabIndex = 2;
             this.NuBA.ThousandsSeparator = true;
             // 
-            // CBBF
+            // BtnSaveConfig
             // 
-            this.CBBF.FormattingEnabled = true;
-            this.CBBF.Items.AddRange(new object[] {
-            "Anual",
-            "One-off"});
-            this.CBBF.Location = new System.Drawing.Point(129, 6);
-            this.CBBF.Name = "CBBF";
-            this.CBBF.Size = new System.Drawing.Size(121, 21);
-            this.CBBF.TabIndex = 3;
+            this.BtnSaveConfig.Location = new System.Drawing.Point(206, 236);
+            this.BtnSaveConfig.Name = "BtnSaveConfig";
+            this.BtnSaveConfig.Size = new System.Drawing.Size(75, 23);
+            this.BtnSaveConfig.TabIndex = 6;
+            this.BtnSaveConfig.Text = "BtnSaveConfig";
+            this.BtnSaveConfig.UseVisualStyleBackColor = true;
+            this.BtnSaveConfig.Click += new System.EventHandler(this.BtnSaveConfig_Click);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.CBWeekStarts);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(277, 204);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // CBWeekStarts
+            // 
+            this.CBWeekStarts.FormattingEnabled = true;
+            this.CBWeekStarts.Location = new System.Drawing.Point(113, 46);
+            this.CBWeekStarts.Name = "CBWeekStarts";
+            this.CBWeekStarts.Size = new System.Drawing.Size(121, 21);
+            this.CBWeekStarts.TabIndex = 0;
             // 
             // Config
             // 
@@ -390,6 +413,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).EndInit();
             this.TabBursary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NuBA)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -424,5 +448,7 @@
         private System.Windows.Forms.TabPage TabBursary;
         private System.Windows.Forms.ComboBox CBBF;
         private System.Windows.Forms.NumericUpDown NuBA;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.ComboBox CBWeekStarts;
     }
 }

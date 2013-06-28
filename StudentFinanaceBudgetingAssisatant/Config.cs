@@ -20,6 +20,11 @@ namespace StudentFinanaceBudgetingAssisatant
         {
             InitializeComponent();
             LoadConfig();
+            string[] DayOfWeek = { Day.Sunday.ToString(), 
+                                     Day.Monday.ToString(), Day.Tuesday.ToString(),
+                                     Day.Wednesday.ToString(), Day.Thursday.ToString(),
+                                     Day.Friday.ToString(), Day.Saturday.ToString()};
+            CBWeekStarts.Items.AddRange(DayOfWeek);
         }
 
         private void BtnSaveConfig_Click(object sender, EventArgs e)
@@ -46,11 +51,13 @@ namespace StudentFinanaceBudgetingAssisatant
             public decimal Trans3Loan;
             public decimal BursaryAmount;
             public string BursaryPaymentFrequency;
+            public DayOfWeek StartDay;
 
             public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,
                 DateTime ET3, DateTime Trans1Date, decimal Trans1Grant, decimal Trans1Loan,
              DateTime Trans2Date, decimal Trans2Grant, decimal Trans2Loan, DateTime Trans3Date,
-             decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency)
+             decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency,
+                int StartDay)
             {
                 this.StartT1 = ST1;
                 this.EndT1 = ET1;
@@ -69,17 +76,18 @@ namespace StudentFinanaceBudgetingAssisatant
 				this.Trans3Loan = Trans3Loan;
                 this.BursaryAmount = BursaryAmount;
                 this.BursaryPaymentFrequency = BursaryPaymentFrequency;
+                this.StartDay = (DayOfWeek)StartDay;
             }
         }
 
-        public Configuration RC;// = new Configuration();
+        public Configuration RC;
 
         public void StoreConfig()
         {
             RC = new Configuration(DTT1S.Value, DTT1E.Value, DTT2S.Value, DTT2E.Value, DTT3S.Value,
                 DTT3E.Value, DTSFP1.Value, NuSFT1Grant.Value, NuSFT1Loan.Value, DTSFP2.Value,
                 NuSFT2Grant.Value, NuSFT2Loan.Value, DTSFP3.Value, NuSFT3Grant.Value, NuSFT3Loan.Value,
-                NuBA.Value, CBBF.Text);
+                NuBA.Value, CBBF.Text, CBWeekStarts.SelectedIndex);
             XmlSerializer XSR = new XmlSerializer(typeof(Configuration));
             FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Create);
             XSR.Serialize(ConfigStream, RC);
@@ -97,25 +105,26 @@ namespace StudentFinanaceBudgetingAssisatant
                 if (ConfigStream.Length > 0)
                 {
                     RC = (Configuration)XSR.Deserialize(ConfigStream);
+
+                    ConfigStream.Close();
+                    DTT1S.Value = RC.StartT1;
+                    DTT1E.Value = RC.EndT1;
+                    DTT2S.Value = RC.StartT2;
+                    DTT2E.Value = RC.EndT2;
+                    DTT3S.Value = RC.StartT3;
+                    DTT3E.Value = RC.EndT3;
+                    DTSFP1.Value = RC.Trans1Date;
+                    NuSFT1Grant.Value = RC.Trans1Grant;
+                    NuSFT1Loan.Value = RC.Trans1Loan;
+                    DTSFP2.Value = RC.Trans2Date;
+                    NuSFT2Grant.Value = RC.Trans2Grant;
+                    NuSFT2Loan.Value = RC.Trans2Loan;
+                    DTSFP3.Value = RC.Trans3Date;
+                    NuSFT3Grant.Value = RC.Trans3Grant;
+                    NuSFT3Loan.Value = RC.Trans3Loan;
+                    NuBA.Value = RC.BursaryAmount;
+                    CBBF.Text = RC.BursaryPaymentFrequency;
                 }
-                ConfigStream.Close();
-                DTT1S.Value = RC.StartT1;
-                DTT1E.Value = RC.EndT1;
-                DTT2S.Value = RC.StartT2;
-                DTT2E.Value = RC.EndT2;
-                DTT3S.Value = RC.StartT3;
-                DTT3E.Value = RC.EndT3;
-				DTSFP1.Value = RC.Trans1Date;
-				NuSFT1Grant.Value = RC.Trans1Grant;
-				NuSFT1Loan.Value = RC.Trans1Loan;
-				DTSFP2.Value = RC.Trans2Date;
-				NuSFT2Grant.Value = RC.Trans2Grant;
-				NuSFT2Loan.Value = RC.Trans2Loan;
-				DTSFP3.Value = RC.Trans3Date;
-				NuSFT3Grant.Value = RC.Trans3Grant;
-                NuSFT3Loan.Value = RC.Trans3Loan;
-                NuBA.Value = RC.BursaryAmount;
-                CBBF.Text = RC.BursaryPaymentFrequency;
             }
             else
             {

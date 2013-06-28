@@ -39,7 +39,7 @@ namespace StudentFinanaceBudgetingAssisatant
         
         string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };
         string[] CategoriesOut = { "Food", "Accomodation" };
-        decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
+        public decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
         public decimal TotalIncome;
         public decimal TotalOutcome;
         public decimal Food;
@@ -140,11 +140,13 @@ namespace StudentFinanaceBudgetingAssisatant
             public decimal Trans3Loan;
             public decimal BursaryAmount;
             public string BursaryPaymentFrequency;
+            public DayOfWeek StartDay;
 
             public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,
                 DateTime ET3, DateTime Trans1Date, decimal Trans1Grant, decimal Trans1Loan,
              DateTime Trans2Date, decimal Trans2Grant, decimal Trans2Loan, DateTime Trans3Date,
-             decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency)
+             decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency,
+                int StartDay)
             {
                 this.StartT1 = ST1;
                 this.EndT1 = ET1;
@@ -163,6 +165,7 @@ namespace StudentFinanaceBudgetingAssisatant
                 this.Trans3Loan = Trans3Loan;
                 this.BursaryAmount = BursaryAmount;
                 this.BursaryPaymentFrequency = BursaryPaymentFrequency;
+                this.StartDay = (DayOfWeek)StartDay;
             }
         }
         public Configuration RC = new Configuration();
@@ -585,6 +588,51 @@ namespace StudentFinanaceBudgetingAssisatant
 				return;
              }
 		}
+
+        #region Week
+        private void WeekTotal(Transactions LT, bool IsIn)
+        {
+            DateTime Start = GetStartOfWeek();
+            DateTime End = Start.AddDays(7);
+            if (IsIn)
+            {
+                if (Start < LT.Deadline && LT.Deadline < End)
+                {
+                    InWeekly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (LT.Deadline < Start)
+                {
+                    InWeekly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+            else
+            {
+                if (Start < LT.Deadline && LT.Deadline < End)
+                {
+                    OutWeekly.Current += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+                else if (LT.Deadline < Start)
+                {
+                    OutWeekly.Previous += (LT.AmountReal == 0 ? LT.AmountPre : LT.AmountReal);
+                }
+            }
+        }
+
+        private DateTime GetStartOfWeek()
+        {
+            DayOfWeek Start = (DayOfWeek)RC.StartDay;
+            DayOfWeek Today = DateTime.Today.DayOfWeek;
+            if (Today == Start) // First day so previous 7 to be considered
+            {
+                return DateTime.Today.Subtract(TimeSpan.FromDays(7));
+            }
+            else if (Today > Start)
+            {
+                return DateTime.Today.Subtract(TimeSpan.FromDays(Start - Today));
+            }
+            else return DateTime.Today.Subtract(TimeSpan.FromDays(Today - Start));
+        }
+        #endregion
 
         #region Month
         private void MonthTotal(Transactions LT, bool IsIn)
