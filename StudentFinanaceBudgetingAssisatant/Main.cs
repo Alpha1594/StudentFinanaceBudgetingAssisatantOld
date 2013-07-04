@@ -48,6 +48,8 @@ namespace StudentFinanaceBudgetingAssisatant
         public int LimNextTranaction = 10;
         public int LimTransactionsToProcess = 10;
 
+        string[] pseudonullStringArray;
+
         public struct Transactions{
             public string Name;
             public string Company;
@@ -221,8 +223,9 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void BtnAddIn_Click(object sender, EventArgs e)
         {
-            Transactions temp = new Transactions(TBInName.Text, CBInCompany.Text, CBInCategory.Text, Type.In.ToString(),
-                NuInAmountPre.Value, (DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
+            Transactions temp = new Transactions(TBInName.Text, CBInCompany.Text, CBInCategory.Text,
+                Type.In.ToString(), NuInAmountPre.Value,
+                (DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
                 DTInDeadline.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
                 CBInRepeat.Checked, DTRepeatStartIn.Value, DTRepeatEndIn.Value,
                 CBRepeatFreqIn.Text);
@@ -495,7 +498,9 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void Total() // Calculates Income, Outcome & balance && Updates GUI
         {
-			#region Reset Values
+            Income = Sort(Income);
+            Outcome = Sort(Outcome);
+            #region Reset Values
             TotalIncome = 0;
             TotalOutcome = 0;
             Food = 0;
@@ -849,7 +854,7 @@ namespace StudentFinanaceBudgetingAssisatant
         private void LoadData()
         {
             XmlSerializer XSR = new XmlSerializer(typeof(StoredData));
-            PopulateList:
+            //PopulateList:
             if (File.Exists("Finances.xml"))
             {
                 FileStream FS = new FileStream("Finances.xml", FileMode.Open);
@@ -866,7 +871,7 @@ namespace StudentFinanaceBudgetingAssisatant
             {
                 FileStream FS = new FileStream("Finances.xml", FileMode.CreateNew);
                 FS.Close();
-                goto PopulateList;
+                //goto PopulateList;
             }
         }
 
@@ -922,6 +927,54 @@ namespace StudentFinanaceBudgetingAssisatant
         {
             Config C = new Config();
             C.ShowDialog();
+        }
+
+        private void SetUp()
+        {
+            FileStream FS = new FileStream("Finances.xml", FileMode.Open);
+            if (FS.Length > 0)
+            {
+                return;
+            }
+            else
+            {
+                FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Open);
+                if (ConfigStream.Length > 0)
+                {
+                    //Transactions GT1 = new Transactions("Grant Term 1", "Student Finance", "",
+                    //    Type.In.ToString(), RC.Trans1Grant, RC.Trans1Grant, false, pseudonullStringArray, RC.Trans1Date,
+                    //    RC.Trans1Date, false, DateTime.Today, DateTime.Today, "");
+                    //Income.Add(GT1);
+                }
+            }
+            FS.Close();
+        }
+
+        private List<Transactions> Sort(List<Transactions> input)
+        {
+            List<Transactions> Unsort = input;
+            List<Transactions> Sorted = new List<Transactions>();
+            int count = input.Count;
+            int iteration = 0;
+            while (Unsort.Count > 0)
+            {
+                Transactions stepper = Unsort[0];
+                foreach (Transactions T in Unsort)
+                {
+                    if (T.Deadline < stepper.Deadline)
+                    {
+                        stepper = T;
+                    }
+                    Sorted.Add(stepper);
+                    Unsort.RemoveAt(Unsort.IndexOf(stepper));
+                    iteration++;
+                    if (iteration == count)
+                    {
+                        return Sorted;
+                    }
+                }
+            }
+            return Sorted;
         }
 
         #region TransactionMode
