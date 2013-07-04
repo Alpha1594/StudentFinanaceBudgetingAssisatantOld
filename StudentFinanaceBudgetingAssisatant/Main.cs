@@ -29,6 +29,7 @@ namespace StudentFinanaceBudgetingAssisatant
                 CBOutCategory.Items.Add(str);
             }
             LoadData();
+			PopulateTransLists();
             Total();
         }
 
@@ -47,8 +48,6 @@ namespace StudentFinanaceBudgetingAssisatant
         public decimal Balance;
         public int LimNextTranaction = 10;
         public int LimTransactionsToProcess = 10;
-
-        string[] pseudonullStringArray;
 
         public struct Transactions{
             public string Name;
@@ -226,18 +225,17 @@ namespace StudentFinanaceBudgetingAssisatant
             Transactions temp = new Transactions(TBInName.Text, CBInCompany.Text, CBInCategory.Text,
                 Type.In.ToString(), NuInAmountPre.Value,
                 (DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
-                DTInDeadline.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
+                CBInCompleted.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
                 CBInRepeat.Checked, DTRepeatStartIn.Value, DTRepeatEndIn.Value,
                 CBRepeatFreqIn.Text);
-
             Income.Add(temp);
-            
+
             if (sender.ToString().Contains("Update"))
             {
                 Income.RemoveAt(LBIn.SelectedIndex);
                 BtnAddIn.Text = "BtnAddIn";
             }
-
+            ResetTabIn(sender, e);
             PopulateTransLists();
             WriteToFile(sender, e);
         }
@@ -245,7 +243,6 @@ namespace StudentFinanaceBudgetingAssisatant
         private void InFmt(object sender, EventArgs e)
         {
             string Input = sender.ToString().Substring(sender.ToString().LastIndexOf(":") + 2);
-            // MessageBox.Show(Input);
             LaIn.ForeColor = TxtFormat(TotalIncome);
             In.ForeColor = TxtFormat(TotalIncome);
         }
@@ -375,13 +372,12 @@ namespace StudentFinanaceBudgetingAssisatant
                 CBOutRepeat.Checked, TBOutComment.Lines, DTOutDeadline.Value, DTOutReal.Value,
                 CBOutRepeat.Checked, DTRepeatStartOut.Value, DTRepeatEndOut.Value,
                 CBRepeatFreqIn.Text);
-
             if (sender.ToString().Contains("Update"))
             {
                 Outcome.RemoveAt(LBOut.SelectedIndex);
                 BtnAddOut.Text = "BtnAddOut";
             }
-
+            ResetTabOut(sender, e);
             Outcome.Add(temp);
             PopulateTransLists();
             WriteToFile(sender, e);
@@ -402,7 +398,6 @@ namespace StudentFinanaceBudgetingAssisatant
             {
                 ColorCode = Color.Black;
             }
-            //MessageBox.Show(ColorCode.ToString());
             LaOut.ForeColor = ColorCode;
             Out.ForeColor = ColorCode;
         }
@@ -498,8 +493,6 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void Total() // Calculates Income, Outcome & balance && Updates GUI
         {
-            Income = Sort(Income);
-            Outcome = Sort(Outcome);
             #region Reset Values
             TotalIncome = 0;
             TotalOutcome = 0;
@@ -865,7 +858,6 @@ namespace StudentFinanaceBudgetingAssisatant
                 FS.Close();
                 Income = SD.In;
                 Outcome = SD.Out;
-                PopulateTransLists();
             }
             else
             {
@@ -877,6 +869,7 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void PopulateTransLists()
         {
+            Sort();
             LBIn.Items.Clear();
             foreach (Transactions I in Income)
             {
@@ -950,31 +943,10 @@ namespace StudentFinanaceBudgetingAssisatant
             FS.Close();
         }
 
-        private List<Transactions> Sort(List<Transactions> input)
+        private void Sort()
         {
-            List<Transactions> Unsort = input;
-            List<Transactions> Sorted = new List<Transactions>();
-            int count = input.Count;
-            int iteration = 0;
-            while (Unsort.Count > 0)
-            {
-                Transactions stepper = Unsort[0];
-                foreach (Transactions T in Unsort)
-                {
-                    if (T.Deadline < stepper.Deadline)
-                    {
-                        stepper = T;
-                    }
-                    Sorted.Add(stepper);
-                    Unsort.RemoveAt(Unsort.IndexOf(stepper));
-                    iteration++;
-                    if (iteration == count)
-                    {
-                        return Sorted;
-                    }
-                }
-            }
-            return Sorted;
+            Income.Sort((X, Y) => X.Deadline.CompareTo(Y.Deadline));
+            Outcome.Sort((X, Y) => X.Deadline.CompareTo(Y.Deadline));
         }
 
         #region TransactionMode

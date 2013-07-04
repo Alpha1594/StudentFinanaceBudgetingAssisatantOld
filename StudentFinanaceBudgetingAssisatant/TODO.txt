@@ -20,11 +20,7 @@ Repeating transactions
 		check during calculations
 		Or produce a table in advance
 
-Sort lists In|Outcome by deadline date
-
-CANNOT PROCESS THIS AS A LIST AS A FOREACH LOOP
-CHANGING THE LIST LENGTH FUCKS UP THE ENUMERATION
-
+X Sort lists In|Outcome by deadline date
 	Consider the processing times of each institution
 		When specified add appropriate time to the deadline
 			Real time in a tooltip
