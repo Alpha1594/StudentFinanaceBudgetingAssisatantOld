@@ -1,0 +1,281 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Accomodation	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public decimal Accomodation;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+AmountPre	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal AmountPre;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+AmountReal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal AmountReal;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Anualy	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.RepeatFreq	file:
+Balance	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public decimal Balance;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+BreakEvenThreshold	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public decimal BreakEvenThreshold = 20;    \/\/ Temp Val TODO replace with user set value.$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+BtnAddIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Button BtnAddIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+BtnAddIn_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void BtnAddIn_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+BtnAddOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Button BtnAddOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+BtnAddOut_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void BtnAddOut_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+BtnResetTabIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Button BtnResetTabIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+BtnResetTabOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Button BtnResetTabOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+BtnSaveConfig	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Button BtnSaveConfig;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+BtnSaveConfig_Click	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^        private void BtnSaveConfig_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Config	file:
+BursaryAmount	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal BursaryAmount;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+BursaryAmount	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal BursaryAmount;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+BursaryPaymentFrequency	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public string BursaryPaymentFrequency;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+BursaryPaymentFrequency	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string BursaryPaymentFrequency;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+CBBF	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.ComboBox CBBF;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+CBInCategory	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ComboBox CBInCategory;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBInCompany	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ComboBox CBInCompany;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBInCompleted	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.CheckBox CBInCompleted;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBInRepeat	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.CheckBox CBInRepeat;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBOutCategory	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ComboBox CBOutCategory;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBOutCompany	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ComboBox CBOutCompany;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBOutCompleted	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.CheckBox CBOutCompleted;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBOutRepeat	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.CheckBox CBOutRepeat;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBRepeatFreqIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ComboBox CBRepeatFreqIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBRepeatFreqOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ComboBox CBRepeatFreqOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CBWeekStarts	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.ComboBox CBWeekStarts;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+CategorieIn	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CategoriesOut	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        string[] CategoriesOut = { "Food", "Accomodation" };$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Category	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string Category;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Comment	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string[] Comment;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Comments	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string[] Comments;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Company
+Company	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string Company;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Company	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public struct Company$/;"	s	class:StudentFinanaceBudgetingAssisatant.Main
+Completed	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public bool Completed;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+CompletionToggleIn	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void CompletionToggleIn(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+CompletionToggleOut	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void CompletionToggleOut(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Config	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^    partial class Config$/;"	c	namespace:StudentFinanaceBudgetingAssisatant
+Config	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^        public Config()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Config
+Config	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^    public partial class Config : Form$/;"	c	namespace:StudentFinanaceBudgetingAssisatant
+Configuration	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,$/;"	m	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Configuration	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^        public struct Configuration$/;"	s	class:StudentFinanaceBudgetingAssisatant.Config
+Configuration	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,$/;"	m	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Configuration	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public struct Configuration$/;"	s	class:StudentFinanaceBudgetingAssisatant.Main
+Culture	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^        internal static global::System.Globalization.CultureInfo Culture$/;"	p	class:StudentFinanaceBudgetingAssisatant.Properties.Resources
+Current	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Current;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.TotalPerTime
+DTInDeadline	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTInDeadline;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTInReal	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTInReal;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTOutDeadline	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTOutDeadline;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTOutReal	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTOutReal;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTRepeatEndIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTRepeatEndIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTRepeatEndOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTRepeatEndOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTRepeatStartIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTRepeatStartIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTRepeatStartOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTRepeatStartOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+DTSFP1	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTSFP1;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTSFP2	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTSFP2;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTSFP3	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTSFP3;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTT1E	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTT1E;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTT1S	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTT1S;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTT2E	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTT2E;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTT2S	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTT2S;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTT3E	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTT3E;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+DTT3S	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.DateTimePicker DTT3S;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+Deadline	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime Deadline;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Default	.\StudentFinanaceBudgetingAssisatant\Properties\Settings.Designer.cs	/^        public static Settings Default$/;"	p	class:StudentFinanaceBudgetingAssisatant.Properties.Settings
+DefaultCategory	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string DefaultCategory;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Company
+Dispose	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        protected override void Dispose(bool disposing)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Config
+Dispose	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        protected override void Dispose(bool disposing)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main
+EditConfig	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void EditConfig(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+EndT1	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime EndT1;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+EndT1	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime EndT1;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+EndT2	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime EndT2;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+EndT2	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime EndT2;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+EndT3	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime EndT3;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+EndT3	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime EndT3;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Everything	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.RepeatFreq	file:
+Food	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public decimal Food;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+GetQuarter	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private int GetQuarter()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GetQuarter	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private int GetQuarter(DateTime Given)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GetStartOfWeek	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private DateTime GetStartOfWeek()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GetTerm	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private int GetTerm()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GetTerm	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private int GetTerm(DateTime Given)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GetYear	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private int GetYear()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GetYear	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private int GetYear(DateTime Given)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GotoTabIn	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void GotoTabIn(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+GotoTabOut	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void GotoTabOut(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+In	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label In;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+In	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public List<Transactions> In;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.StoredData
+In	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum Type { In, Out };$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.Type	file:
+InAnualy	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime InAnualy;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+InFmt	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void InFmt(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+InMonthly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime InMonthly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+InOnBudget	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void InOnBudget(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+InQuarterly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime InQuarterly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+InTermly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime InTermly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+InWeekly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime InWeekly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+Income	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public List<Transactions> Income = new List<Transactions>();$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+InitializeComponent	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private void InitializeComponent()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Config	file:
+InitializeComponent	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private void InitializeComponent()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LBIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ListBox LBIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LBIn_SelectedIndexChanged	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void LBIn_SelectedIndexChanged(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LBNextTransactions	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ListBox LBNextTransactions;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LBOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ListBox LBOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LBOut_SelectedIndexChanged	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void LBOut_SelectedIndexChanged(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LBTransactionsToProcess	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ListBox LBTransactionsToProcess;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LaAccomodation	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label LaAccomodation;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LaFood	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label LaFood;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LaIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label LaIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LaOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label LaOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+LimNextTranaction	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public int LimNextTranaction = 10;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+LimTransactionsToProcess	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public int LimTransactionsToProcess = 10;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+LoadConfig	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^        public void LoadConfig()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Config
+LoadConfig	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public void LoadConfig()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main
+LoadData	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void LoadData()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Main	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^    partial class Main$/;"	c	namespace:StudentFinanaceBudgetingAssisatant
+Main	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public Main()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main
+Main	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^    public partial class Main : Form$/;"	c	namespace:StudentFinanaceBudgetingAssisatant
+Main	.\StudentFinanaceBudgetingAssisatant\Program.cs	/^        static void Main()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Program	file:
+MainMenu	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.MenuStrip MainMenu;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+MonthTotal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void MonthTotal(Transactions LT, bool IsIn)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Monthly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.RepeatFreq	file:
+Name	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string Name;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Company
+Name	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string Name;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+NuBA	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuBA;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+NuInAmountPre	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuInAmountPre;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+NuInAmountReal	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuInAmountReal;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+NuOutAmountPre	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuOutAmountPre;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+NuOutAmountReal	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuOutAmountReal;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+NuSFT1Grant	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuSFT1Grant;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+NuSFT1Loan	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuSFT1Loan;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+NuSFT2Grant	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuSFT2Grant;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+NuSFT2Loan	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuSFT2Loan;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+NuSFT3Grant	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuSFT3Grant;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+NuSFT3Loan	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.NumericUpDown NuSFT3Loan;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+Out	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label Out;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Out	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public List<Transactions> Out;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.StoredData
+Out	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum Type { In, Out };$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.Type	file:
+OutAnualy	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime OutAnualy;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+OutFmt	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void OutFmt(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+OutMonthly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime OutMonthly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+OutOnBudget	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void OutOnBudget(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+OutQuarterly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime OutQuarterly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+OutTermly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime OutTermly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+OutWeekly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public TotalPerTime OutWeekly;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+Outcome	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public List<Transactions> Outcome = new List<Transactions>();$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+PopulateTransLists	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void PopulateTransLists()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Previous	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Previous;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.TotalPerTime
+ProcessedOn	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime ProcessedOn;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+ProcessingTime	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public int ProcessingTime;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Company
+Program	.\StudentFinanaceBudgetingAssisatant\Program.cs	/^    static class Program$/;"	c	namespace:StudentFinanaceBudgetingAssisatant
+QuarterTotal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void QuarterTotal(Transactions LT, bool IsIn)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Quarterly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.RepeatFreq	file:
+RC	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^        public Configuration RC;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config
+RC	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public Configuration RC = new Configuration();$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+RCMAnual	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem RCMAnual;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMAnual_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void RCMAnual_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMMonth	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem RCMMonth;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMMonth_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void RCMMonth_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMQuarter	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem RCMQuarter;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMQuarter_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void RCMQuarter_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMReset	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem RCMReset;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMReset_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void RCMReset_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMTerm	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem RCMTerm;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMTerm_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void RCMTerm_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMTime	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ContextMenuStrip RCMTime;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMWeek	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem RCMWeek;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RCMWeek_Click	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void RCMWeek_Click(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+RF	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public RepeatFreq RF = RepeatFreq.Everything;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+Repeat	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public bool Repeat;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+RepeatEnd	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime RepeatEnd;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+RepeatFreq	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string RepeatFreq;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+RepeatFreq	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	g	class:StudentFinanaceBudgetingAssisatant.Main
+RepeatStart	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime RepeatStart;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+ResetTabIn	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void ResetTabIn(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+ResetTabOut	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void ResetTabOut(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+ResourceManager	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^        internal static global::System.Resources.ResourceManager ResourceManager$/;"	p	class:StudentFinanaceBudgetingAssisatant.Properties.Resources
+Resources	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^        internal Resources()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Properties.Resources	file:
+Resources	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^    internal class Resources$/;"	c	namespace:StudentFinanaceBudgetingAssisatant.Properties
+Resultant	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.Label Resultant;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+ResultantFmt	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void ResultantFmt(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+SD	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public StoredData SD;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+SetTotal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^		private void SetTotal()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+SetUp	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void SetUp()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Settings	.\StudentFinanaceBudgetingAssisatant\Properties\Settings.Designer.cs	/^    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase$/;"	c	namespace:StudentFinanaceBudgetingAssisatant.Properties
+Sort	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void Sort()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+StartDay	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DayOfWeek StartDay;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+StartDay	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DayOfWeek StartDay;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+StartT1	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime StartT1;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+StartT1	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime StartT1;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+StartT2	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime StartT2;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+StartT2	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime StartT2;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+StartT3	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime StartT3;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+StartT3	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime StartT3;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+StoreConfig	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^        public void StoreConfig()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Config
+StoreConfig	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public void StoreConfig()$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main
+StoredData	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public StoredData(List<Transactions> Income, List<Transactions> Outcome)$/;"	m	struct:StudentFinanaceBudgetingAssisatant.Main.StoredData
+StoredData	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public struct StoredData$/;"	s	class:StudentFinanaceBudgetingAssisatant.Main
+StudentFinanaceBudgetingAssisatant	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^﻿namespace StudentFinanaceBudgetingAssisatant$/;"	n
+StudentFinanaceBudgetingAssisatant	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^namespace StudentFinanaceBudgetingAssisatant$/;"	n
+StudentFinanaceBudgetingAssisatant	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^﻿namespace StudentFinanaceBudgetingAssisatant$/;"	n
+StudentFinanaceBudgetingAssisatant	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^namespace StudentFinanaceBudgetingAssisatant$/;"	n
+StudentFinanaceBudgetingAssisatant	.\StudentFinanaceBudgetingAssisatant\Program.cs	/^namespace StudentFinanaceBudgetingAssisatant$/;"	n
+StudentFinanaceBudgetingAssisatant.Properties	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^namespace StudentFinanaceBudgetingAssisatant.Properties$/;"	n
+StudentFinanaceBudgetingAssisatant.Properties	.\StudentFinanaceBudgetingAssisatant\Properties\Settings.Designer.cs	/^namespace StudentFinanaceBudgetingAssisatant.Properties$/;"	n
+TBInComment	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TextBox TBInComment;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TBInName	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TextBox TBInName;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TBOutComment	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TextBox TBOutComment;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TBOutName	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TextBox TBOutName;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TabBursary	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.TabPage TabBursary;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+TabDates	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.TabPage TabDates;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+TabIn	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TabPage TabIn;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TabOut	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TabPage TabOut;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TabOverview	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TabPage TabOverview;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TabStudentFinance	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.TabPage TabStudentFinance;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+TermTotal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void TermTotal(Transactions LT, bool IsIn)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Termly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.RepeatFreq	file:
+ToggleRepeatIn	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void ToggleRepeatIn(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+ToggleRepeatOut	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void ToggleRepeatOut(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Total	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void Total() \/\/ Calculates Income, Outcome & balance && Updates GUI$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+TotalIncome	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public decimal TotalIncome;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+TotalOutcome	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public decimal TotalOutcome;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main
+TotalPerTime	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public TotalPerTime(decimal Previous, decimal Current)$/;"	m	struct:StudentFinanaceBudgetingAssisatant.Main.TotalPerTime
+TotalPerTime	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public struct TotalPerTime$/;"	s	class:StudentFinanaceBudgetingAssisatant.Main
+Trans1Date	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime Trans1Date;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans1Date	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime Trans1Date;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans1Grant	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal Trans1Grant;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans1Grant	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Trans1Grant;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans1Loan	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal Trans1Loan;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans1Loan	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Trans1Loan;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans2Date	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime Trans2Date;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans2Date	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime Trans2Date;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans2Grant	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal Trans2Grant;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans2Grant	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Trans2Grant;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans2Loan	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal Trans2Loan;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans2Loan	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Trans2Loan;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans3Date	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public DateTime Trans3Date;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans3Date	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public DateTime Trans3Date;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans3Grant	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal Trans3Grant;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans3Grant	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Trans3Grant;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Trans3Loan	.\StudentFinanaceBudgetingAssisatant\Config.cs	/^            public decimal Trans3Loan;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Config.Configuration
+Trans3Loan	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public decimal Trans3Loan;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Configuration
+Transactions	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public Transactions(string Name, string Company, string Category, string Type, decimal AmountPre, decimal AmountReal,$/;"	m	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Transactions	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public struct Transactions{$/;"	s	class:StudentFinanaceBudgetingAssisatant.Main
+TxtFormat	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private Color TxtFormat(decimal Input)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Type	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^            public string Type;$/;"	f	struct:StudentFinanaceBudgetingAssisatant.Main.Transactions
+Type	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum Type { In, Out };$/;"	g	class:StudentFinanaceBudgetingAssisatant.Main
+WeekTotal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void WeekTotal(Transactions LT, bool IsIn)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+Weekly	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};$/;"	e	enum:StudentFinanaceBudgetingAssisatant.Main.RepeatFreq	file:
+WriteToFile	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void WriteToFile(object sender, EventArgs e)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+YearTotal	.\StudentFinanaceBudgetingAssisatant\Main.cs	/^        private void YearTotal(Transactions LT, bool IsIn)$/;"	m	class:StudentFinanaceBudgetingAssisatant.Main	file:
+anualyToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem anualyToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+components	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.ComponentModel.IContainer components = null;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+components	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.ComponentModel.IContainer components = null;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+configurationToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+defaultInstance	.\StudentFinanaceBudgetingAssisatant\Properties\Settings.Designer.cs	/^        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));$/;"	f	class:StudentFinanaceBudgetingAssisatant.Properties.Settings	file:
+label1	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Label label1;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+label2	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Label label2;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+label3	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Label label3;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+label4	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Label label4;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+label5	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Label label5;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+label6	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.Label label6;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+monthlyToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem monthlyToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+quarterlyToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem quarterlyToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+resetToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+resourceCulture	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^        private static global::System.Globalization.CultureInfo resourceCulture;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Properties.Resources	file:
+resourceMan	.\StudentFinanaceBudgetingAssisatant\Properties\Resources.Designer.cs	/^        private static global::System.Resources.ResourceManager resourceMan;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Properties.Resources	file:
+tabControl1	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.TabControl tabControl1;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+tabControl1	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.TabControl tabControl1;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+tabPage1	.\StudentFinanaceBudgetingAssisatant\Config.Designer.cs	/^        private System.Windows.Forms.TabPage tabPage1;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Config	file:
+termlyToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem termlyToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+transactionModeToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem transactionModeToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:
+weeklyToolStripMenuItem	.\StudentFinanaceBudgetingAssisatant\Main.Designer.cs	/^        private System.Windows.Forms.ToolStripMenuItem weeklyToolStripMenuItem;$/;"	f	class:StudentFinanaceBudgetingAssisatant.Main	file:

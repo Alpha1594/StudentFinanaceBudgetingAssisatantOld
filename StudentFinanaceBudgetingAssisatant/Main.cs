@@ -29,15 +29,18 @@ namespace StudentFinanaceBudgetingAssisatant
                 CBOutCategory.Items.Add(str);
             }
             LoadData();
-			PopulateTransLists();
-            Total();
+			if (HasData)
+			{
+				PopulateTransLists();
+				Total();
+			}
         }
 
         #region SharedVaribles
         public enum Type { In, Out };
         public enum RepeatFreq { Weekly, Monthly, Quarterly, Termly, Anualy, Everything};
         public RepeatFreq RF = RepeatFreq.Everything;
-        
+
         string[] CategorieIn = { "Loan- Student Finance", "Grant -Student Finance", "Bursary", "Job" };
         string[] CategoriesOut = { "Food", "Accomodation" };
         public decimal BreakEvenThreshold = 20;    // Temp Val TODO replace with user set value.
@@ -48,6 +51,8 @@ namespace StudentFinanaceBudgetingAssisatant
         public decimal Balance;
         public int LimNextTranaction = 10;
         public int LimTransactionsToProcess = 10;
+
+        public bool HasData = false;
 
         public struct Transactions{
             public string Name;
@@ -237,6 +242,7 @@ namespace StudentFinanaceBudgetingAssisatant
             }
             ResetTabIn(sender, e);
             PopulateTransLists();
+			Total();
             WriteToFile(sender, e);
         }
 
@@ -380,6 +386,7 @@ namespace StudentFinanaceBudgetingAssisatant
             ResetTabOut(sender, e);
             Outcome.Add(temp);
             PopulateTransLists();
+			Total();
             WriteToFile(sender, e);
         }
 
@@ -552,7 +559,28 @@ namespace StudentFinanaceBudgetingAssisatant
 
             Balance = TotalIncome - TotalOutcome;
             Resultant.Text = "£ " + Balance.ToString();
+            LBOverview();
         }
+
+        private void LBOverview()
+		{
+            if (HasData)
+            {
+				LBNextTransactions.Items.Add("Income");
+				foreach(Transactions I in Income)
+				{
+					if (I.Deadline > DateTime.Today)
+						LBNextTransactions.Items.Add(I.Name);
+				}
+
+				LBNextTransactions.Items.Add("Outcome");
+				foreach(Transactions O in Outcome)
+				{
+					if (O.Deadline > DateTime.Today)
+						LBNextTransactions.Items.Add(O.Name);
+				}
+			}
+		}
 
 		private void SetTotal()
 		{
@@ -841,7 +869,7 @@ namespace StudentFinanaceBudgetingAssisatant
             FileStream DataOut = new FileStream("Finances.xml", FileMode.Create);
             XSR.Serialize(DataOut, SD);
             DataOut.Close();
-
+			HasData = true;
         }
 
         private void LoadData()
@@ -854,6 +882,7 @@ namespace StudentFinanaceBudgetingAssisatant
                 if (FS.Length > 0)
                 {
                     SD = (StoredData)XSR.Deserialize(FS);
+                    HasData =true;
                 }
                 FS.Close();
                 Income = SD.In;
@@ -883,7 +912,6 @@ namespace StudentFinanaceBudgetingAssisatant
                 string ListElement = O.Name + " £" + (O.Completed ? O.AmountReal : O.AmountPre);
                 LBOut.Items.Add(ListElement);
             }
-            Total();
         }
 
         public void StoreConfig()
@@ -945,8 +973,11 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void Sort()
         {
-            Income.Sort((X, Y) => X.Deadline.CompareTo(Y.Deadline));
-            Outcome.Sort((X, Y) => X.Deadline.CompareTo(Y.Deadline));
+                if (HasData)
+				{
+					Income.Sort((X, Y) => X.Deadline.CompareTo(Y.Deadline));
+					Outcome.Sort((X, Y) => X.Deadline.CompareTo(Y.Deadline));
+				}
         }
 
         #region TransactionMode
