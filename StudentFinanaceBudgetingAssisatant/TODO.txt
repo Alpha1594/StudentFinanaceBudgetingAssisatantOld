@@ -9,11 +9,9 @@ Breakdown of finance for given time
 			X Term
 			X Quarterly
 			X Month
-				Consider future
-			Week
-				What day to start week on
-
-Create company struct
+			X Week
+				X What day to start week on
+X Create company struct
 
 Repeating transactions
 	Store these together & 

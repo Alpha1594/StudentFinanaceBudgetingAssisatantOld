@@ -227,12 +227,23 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void BtnAddIn_Click(object sender, EventArgs e)
         {
-            Transactions temp = new Transactions(TBInName.Text, CBInCompany.Text, CBInCategory.Text,
-                Type.In.ToString(), NuInAmountPre.Value,
-                (DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
-                CBInCompleted.Checked, TBInComment.Lines, DTInDeadline.Value, DTInReal.Value,
-                CBInRepeat.Checked, DTRepeatStartIn.Value, DTRepeatEndIn.Value,
-                CBRepeatFreqIn.Text);
+            Transactions temp = new Transactions(
+TBInName.Text,
+CBInCompany.Text,
+CBInCategory.Text,
+Type.In.ToString(),
+NuInAmountPre.Value,
+
+(DTInDeadline.Checked == true? NuInAmountReal.Value : 0),
+
+CBInCompleted.Checked,
+TBInComment.Lines,
+DTInDeadline.Value,
+DTInReal.Value,
+CBInRepeat.Checked,
+DTRepeatStartIn.Value,
+DTRepeatEndIn.Value,
+CBRepeatFreqIn.Text);
             Income.Add(temp);
 
             if (sender.ToString().Contains("Update"))
@@ -373,18 +384,17 @@ namespace StudentFinanaceBudgetingAssisatant
         private void BtnAddOut_Click(object sender, EventArgs e)
         {
             Transactions temp = new Transactions(TBOutName.Text, CBOutCompany.Text, CBOutCategory.Text,
-                Type.Out.ToString(), NuOutAmountPre.Value, 
-                (CBOutCompleted.Checked == true ? NuOutAmountReal.Value : 0),
-                CBOutRepeat.Checked, TBOutComment.Lines, DTOutDeadline.Value, DTOutReal.Value,
-                CBOutRepeat.Checked, DTRepeatStartOut.Value, DTRepeatEndOut.Value,
-                CBRepeatFreqIn.Text);
+                Type.Out.ToString(), NuOutAmountPre.Value, (CBOutCompleted.Checked ? NuOutAmountReal.Value : 0),
+                CBOutCompleted.Checked, TBOutComment.Lines, DTOutDeadline.Value, DTOutReal.Value,
+                CBOutRepeat.Checked, DTRepeatStartOut.Value, DTRepeatEndOut.Value, CBRepeatFreqOut.Text);
+            Outcome.Add(temp);
+
             if (sender.ToString().Contains("Update"))
             {
                 Outcome.RemoveAt(LBOut.SelectedIndex);
                 BtnAddOut.Text = "BtnAddOut";
             }
             ResetTabOut(sender, e);
-            Outcome.Add(temp);
             PopulateTransLists();
 			Total();
             WriteToFile(sender, e);
@@ -564,20 +574,28 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void LBOverview()
 		{
+            LBNextTransactions.Items.Clear();
+            LBTransactionsToProcess.Items.Clear();
             if (HasData)
             {
-				LBNextTransactions.Items.Add("Income");
+				LBNextTransactions.Items.Add("##INCOME##");
+				LBTransactionsToProcess.Items.Add("##INCOME##");
 				foreach(Transactions I in Income)
 				{
 					if (I.Deadline > DateTime.Today)
 						LBNextTransactions.Items.Add(I.Name);
+                    if (I.Completed == false)
+                        LBTransactionsToProcess.Items.Add(I.Name);
 				}
 
-				LBNextTransactions.Items.Add("Outcome");
+				LBNextTransactions.Items.Add("##OUTCOME##");
+				LBTransactionsToProcess.Items.Add("##OUTCOME##");
 				foreach(Transactions O in Outcome)
 				{
 					if (O.Deadline > DateTime.Today)
 						LBNextTransactions.Items.Add(O.Name);
+                    if (O.Completed == false)
+                        LBTransactionsToProcess.Items.Add(O.Name);
 				}
 			}
 		}
@@ -900,13 +918,13 @@ namespace StudentFinanaceBudgetingAssisatant
         {
             Sort();
             LBIn.Items.Clear();
+            LBOut.Items.Clear();
             foreach (Transactions I in Income)
             {
                 string ListElement = I.Name + " £" + (I.Completed ? I.AmountReal : I.AmountPre);
                 LBIn.Items.Add(ListElement);
             }
 
-            LBOut.Items.Clear();
             foreach (Transactions O in Outcome)
             {
                 string ListElement = O.Name + " £" + (O.Completed ? O.AmountReal : O.AmountPre);
