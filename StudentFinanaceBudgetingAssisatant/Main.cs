@@ -1041,5 +1041,11 @@ CBRepeatFreqIn.Text);
             Total();
         }
         #endregion
+
+        private void insuranceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Insurance I = new Insurance();
+            I.ShowDialog();
+        }
     }
 }

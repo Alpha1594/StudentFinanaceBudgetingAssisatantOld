@@ -38,3 +38,10 @@ X RC to include SF Loans & grants termly breakdown by type & receiving dates
 
 Bank communications method info
 	processing times
+
+Insurance
+	X List of all items:
+		X Name
+		X Value
+		X category
+	Company contact info & policy number

@@ -53,6 +53,7 @@
             this.LBTransactionsToProcess = new System.Windows.Forms.ListBox();
             this.LBNextTransactions = new System.Windows.Forms.ListBox();
             this.TabIn = new System.Windows.Forms.TabPage();
+            this.CBInCompany = new System.Windows.Forms.ComboBox();
             this.BtnResetTabIn = new System.Windows.Forms.Button();
             this.CBInCategory = new System.Windows.Forms.ComboBox();
             this.CBRepeatFreqIn = new System.Windows.Forms.ComboBox();
@@ -70,6 +71,7 @@
             this.LaIn = new System.Windows.Forms.Label();
             this.LBIn = new System.Windows.Forms.ListBox();
             this.TabOut = new System.Windows.Forms.TabPage();
+            this.CBOutCompany = new System.Windows.Forms.ComboBox();
             this.BtnResetTabOut = new System.Windows.Forms.Button();
             this.LaAccomodation = new System.Windows.Forms.Label();
             this.LaFood = new System.Windows.Forms.Label();
@@ -88,8 +90,7 @@
             this.TBOutName = new System.Windows.Forms.TextBox();
             this.LaOut = new System.Windows.Forms.Label();
             this.LBOut = new System.Windows.Forms.ListBox();
-            this.CBInCompany = new System.Windows.Forms.ComboBox();
-            this.CBOutCompany = new System.Windows.Forms.ComboBox();
+            this.insuranceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu.SuspendLayout();
             this.RCMTime.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -106,7 +107,8 @@
             // 
             this.MainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.configurationToolStripMenuItem,
-            this.transactionModeToolStripMenuItem});
+            this.transactionModeToolStripMenuItem,
+            this.insuranceToolStripMenuItem});
             this.MainMenu.Location = new System.Drawing.Point(0, 0);
             this.MainMenu.Name = "MainMenu";
             this.MainMenu.Size = new System.Drawing.Size(701, 24);
@@ -349,6 +351,14 @@
             this.TabIn.Text = "TabIn";
             this.TabIn.UseVisualStyleBackColor = true;
             // 
+            // CBInCompany
+            // 
+            this.CBInCompany.FormattingEnabled = true;
+            this.CBInCompany.Location = new System.Drawing.Point(458, 11);
+            this.CBInCompany.Name = "CBInCompany";
+            this.CBInCompany.Size = new System.Drawing.Size(121, 21);
+            this.CBInCompany.TabIndex = 17;
+            // 
             // BtnResetTabIn
             // 
             this.BtnResetTabIn.Location = new System.Drawing.Point(529, 422);
@@ -547,6 +557,14 @@
             this.TabOut.Text = "TabOut";
             this.TabOut.UseVisualStyleBackColor = true;
             // 
+            // CBOutCompany
+            // 
+            this.CBOutCompany.FormattingEnabled = true;
+            this.CBOutCompany.Location = new System.Drawing.Point(458, 12);
+            this.CBOutCompany.Name = "CBOutCompany";
+            this.CBOutCompany.Size = new System.Drawing.Size(121, 21);
+            this.CBOutCompany.TabIndex = 31;
+            // 
             // BtnResetTabOut
             // 
             this.BtnResetTabOut.Location = new System.Drawing.Point(529, 422);
@@ -733,21 +751,13 @@
             this.LBOut.TabIndex = 1;
             this.LBOut.SelectedIndexChanged += new System.EventHandler(this.LBOut_SelectedIndexChanged);
             // 
-            // CBInCompany
+            // insuranceToolStripMenuItem
             // 
-            this.CBInCompany.FormattingEnabled = true;
-            this.CBInCompany.Location = new System.Drawing.Point(458, 11);
-            this.CBInCompany.Name = "CBInCompany";
-            this.CBInCompany.Size = new System.Drawing.Size(121, 21);
-            this.CBInCompany.TabIndex = 17;
-            // 
-            // CBOutCompany
-            // 
-            this.CBOutCompany.FormattingEnabled = true;
-            this.CBOutCompany.Location = new System.Drawing.Point(458, 12);
-            this.CBOutCompany.Name = "CBOutCompany";
-            this.CBOutCompany.Size = new System.Drawing.Size(121, 21);
-            this.CBOutCompany.TabIndex = 31;
+            this.insuranceToolStripMenuItem.Name = "insuranceToolStripMenuItem";
+            this.insuranceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.I)));
+            this.insuranceToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.insuranceToolStripMenuItem.Text = "&Insurance";
+            this.insuranceToolStripMenuItem.Click += new System.EventHandler(this.insuranceToolStripMenuItem_Click);
             // 
             // Main
             // 
@@ -841,6 +851,7 @@
         private System.Windows.Forms.ToolStripMenuItem RCMReset;
         private System.Windows.Forms.ComboBox CBInCompany;
         private System.Windows.Forms.ComboBox CBOutCompany;
+        private System.Windows.Forms.ToolStripMenuItem insuranceToolStripMenuItem;
     }
 }
 
