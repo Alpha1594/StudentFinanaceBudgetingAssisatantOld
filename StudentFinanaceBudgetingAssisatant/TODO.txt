@@ -30,8 +30,7 @@ Filter lists & reset
 Graphs
 	Work with same options as list filters
 
-? Merged In|Outcome for Lbs on tab0
-	Easier to list separate values for In|Out
+Lbs on tab0
 	Option to limit by Number &| Time period
 
 X RC to include SF Loans & grants termly breakdown by type & receiving dates
