@@ -25,6 +25,8 @@ namespace StudentFinanaceBudgetingAssisatant
                                      Day.Wednesday.ToString(), Day.Thursday.ToString(),
                                      Day.Friday.ToString(), Day.Saturday.ToString()};
             CBWeekStarts.Items.AddRange(DayOfWeek);
+            CBWeekStarts.SelectedIndex = 1;
+            NUYear.Maximum = YearRecords.Count > 0 ? YearRecords.Count : 1; //Max=1 if list !populated
         }
 
         private void BtnSaveConfig_Click(object sender, EventArgs e)
@@ -102,82 +104,52 @@ namespace StudentFinanaceBudgetingAssisatant
 			public DayOfWeek StartDay;
 			public int CurrentYear;
 			public List<YearInfo> YearInfo;
-			public List<CompanyInfo> CompanyInfo;
 
 			public Configuration(int StartDay, decimal CurrentYear,
-                List<YearInfo> YearInfo, List<CompanyInfo> CompanyInfo)
+                List<YearInfo> YearInfo)
 			{
 				this.StartDay = (DayOfWeek) StartDay;
 				this.CurrentYear = (int) CurrentYear;
 				this.YearInfo = YearInfo;
-				this.CompanyInfo = CompanyInfo;
 			}
 		}
-
-
-        //public struct Configuration
-        //{
-        //    public DateTime StartT1;
-        //    public DateTime EndT1;
-        //    public DateTime StartT2;
-        //    public DateTime EndT2;
-        //    public DateTime StartT3;
-        //    public DateTime EndT3;
-        //    public DateTime Trans1Date;
-        //    public decimal Trans1Grant;
-        //    public decimal Trans1Loan;
-        //    public DateTime Trans2Date;
-        //    public decimal Trans2Grant;
-        //    public decimal Trans2Loan;
-        //    public DateTime Trans3Date;
-        //    public decimal Trans3Grant;
-        //    public decimal Trans3Loan;
-        //    public decimal BursaryAmount;
-        //    public string BursaryPaymentFrequency;
-        //    public DayOfWeek StartDay;
-
-        //    public Configuration(DateTime ST1, DateTime ET1, DateTime ST2, DateTime ET2, DateTime ST3,
-        //        DateTime ET3, DateTime Trans1Date, decimal Trans1Grant, decimal Trans1Loan,
-        //     DateTime Trans2Date, decimal Trans2Grant, decimal Trans2Loan, DateTime Trans3Date,
-        //     decimal Trans3Grant, decimal Trans3Loan, decimal BursaryAmount, string BursaryPaymentFrequency,
-        //        int StartDay)
-        //    {
-        //        this.StartT1 = ST1;
-        //        this.EndT1 = ET1;
-        //        this.StartT2 = ST2;
-        //        this.EndT2 = ET2;
-        //        this.StartT3 = ST3;
-        //        this.EndT3 = ET3;
-        //        this.Trans1Date = Trans1Date;
-        //        this.Trans1Grant = Trans1Grant;
-        //        this.Trans1Loan = Trans1Loan;
-        //        this.Trans2Date = Trans2Date;
-        //        this.Trans2Grant = Trans2Grant;
-        //        this.Trans2Loan = Trans2Loan;
-        //        this.Trans3Date = Trans3Date;
-        //        this.Trans3Grant = Trans3Grant;
-        //        this.Trans3Loan = Trans3Loan;
-        //        this.BursaryAmount = BursaryAmount;
-        //        this.BursaryPaymentFrequency = BursaryPaymentFrequency;
-        //        this.StartDay = (DayOfWeek)StartDay;
-        //    }
-        //}
 
         public Configuration RC;
 
         public void StoreConfig()
         {
-            //RC = new Configuration(DTT1S.Value, DTT1E.Value, DTT2S.Value, DTT2E.Value, DTT3S.Value,
-            //    DTT3E.Value, DTSFP1.Value, NuSFT1Grant.Value, NuSFT1Loan.Value, DTSFP2.Value,
-            //    NuSFT2Grant.Value, NuSFT2Loan.Value, DTSFP3.Value, NuSFT3Grant.Value, NuSFT3Loan.Value,
-            //    NuBA.Value, CBBF.Text, CBWeekStarts.SelectedIndex);
-            RC = new Configuration(CBWeekStarts.SelectedIndex, NUYear.Value, YearRecords, ComInfo);
+            TermData T1 = new TermData(DTT1S.Value, DTT1E.Value, NuSFT1Grant.Value, NuSFT1Loan.Value,
+                DTSFP1.Value, NUBT1.Value, DTBT1.Value);
+            TermData T2 = new TermData(DTT2S.Value, DTT2E.Value, NuSFT2Grant.Value, NuSFT2Loan.Value,
+                DTSFP2.Value, NUBT2.Value, DTBT2.Value);
+            TermData T3 = new TermData(DTT3S.Value, DTT3E.Value, NuSFT3Grant.Value, NuSFT3Loan.Value,
+                DTSFP3.Value, NUBT3.Value, DTBT3.Value);
+
+            YearInfo YI = new YearInfo(CBYII.Checked, T1 , T2, T3);
+
+            int year = (int) NUYear.Value - 1;  //0 based index
+            if (YearRecords.Count > 0)
+            {
+                if (YearRecords.Count >= year)
+                    YearRecords[year] = YI;
+            }
+            else YearRecords.Add(YI);
+
+                RC = new Configuration(CBWeekStarts.SelectedIndex, NUYear.Value, YearRecords);
             XmlSerializer XSR = new XmlSerializer(typeof(Configuration));
             FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Create);
-            XSR.Serialize(ConfigStream, RC);
+            try
+            {
+                XSR.Serialize(ConfigStream, RC);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show(Ex.GetBaseException().ToString());
+            }
             ConfigStream.Close();
             LoadConfig();
             MessageBox.Show("Configurations recorded");
+            MessageBox.Show(YearRecords.Count.ToString());
         }
 
         public void LoadConfig()
@@ -191,23 +163,11 @@ namespace StudentFinanaceBudgetingAssisatant
                     RC = (Configuration)XSR.Deserialize(ConfigStream);
 
                     ConfigStream.Close();
-                    //DTT1S.Value = RC.StartT1;
-                    //DTT1E.Value = RC.EndT1;
-                    //DTT2S.Value = RC.StartT2;
-                    //DTT2E.Value = RC.EndT2;
-                    //DTT3S.Value = RC.StartT3;
-                    //DTT3E.Value = RC.EndT3;
-                    //DTSFP1.Value = RC.Trans1Date;
-                    //NuSFT1Grant.Value = RC.Trans1Grant;
-                    //NuSFT1Loan.Value = RC.Trans1Loan;
-                    //DTSFP2.Value = RC.Trans2Date;
-                    //NuSFT2Grant.Value = RC.Trans2Grant;
-                    //NuSFT2Loan.Value = RC.Trans2Loan;
-                    //DTSFP3.Value = RC.Trans3Date;
-                    //NuSFT3Grant.Value = RC.Trans3Grant;
-                    //NuSFT3Loan.Value = RC.Trans3Loan;
-                    //NuBA.Value = RC.BursaryAmount;
-                    //CBBF.Text = RC.BursaryPaymentFrequency;
+
+                    NUYear.Value = RC.CurrentYear;
+                    CBWeekStarts.Text = RC.StartDay.ToString();
+                    // Rest of values set by NUYear eventhandler
+
                 }
             }
             else
@@ -216,6 +176,51 @@ namespace StudentFinanaceBudgetingAssisatant
                 FS.Close();
                 return;
             }
+        }
+
+        private void YearSelected(object sender, EventArgs e)
+        {
+            int year = (int) NUYear.Value-1;
+
+            if (year < 0 || year > 10)
+                return;
+
+            /* TermDates */
+            DTT1S.Value = RC.YearInfo[year].T1.TermStart;
+            DTT1E.Value = RC.YearInfo[year].T1.TermEnd;
+            DTT2S.Value = RC.YearInfo[year].T2.TermStart;
+            DTT2E.Value = RC.YearInfo[year].T2.TermEnd;
+            DTT3S.Value = RC.YearInfo[year].T3.TermStart;
+            DTT3E.Value = RC.YearInfo[year].T3.TermEnd;
+
+            /* SF */
+            DTSFP1.Value = RC.YearInfo[year].T1.SFPayment;
+            NuSFT1Grant.Value = RC.YearInfo[year].T1.Grant;
+            NuSFT1Loan.Value = RC.YearInfo[year].T1.Loan;
+            DTSFP2.Value = RC.YearInfo[year].T2.SFPayment;
+            NuSFT2Grant.Value = RC.YearInfo[year].T2.Grant;
+            NuSFT2Loan.Value = RC.YearInfo[year].T2.Loan;
+            DTSFP3.Value = RC.YearInfo[year].T3.SFPayment;
+            NuSFT3Grant.Value = RC.YearInfo[year].T3.Grant;
+            NuSFT3Loan.Value = RC.YearInfo[year].T3.Loan;
+
+            /* Bursary */
+            NUBT1.Value = RC.YearInfo[year].T1.Bursary;
+            DTBT1.Value = RC.YearInfo[year].T1.BPayment;
+            NUBT2.Value = RC.YearInfo[year].T2.Bursary;
+            DTBT2.Value = RC.YearInfo[year].T2.BPayment;
+            NUBT3.Value = RC.YearInfo[year].T3.Bursary;
+            DTBT3.Value = RC.YearInfo[year].T3.BPayment;
+
+            CBYII.Checked = RC.YearInfo[year].YearInIndustry;
+            string strDay =RC.StartDay.ToString();
+            //MessageBox.Show(strDay);
+            CBWeekStarts.Text = strDay;
+            MessageBox.Show(CBWeekStarts.Text + "\n" + DayOfWeek.Sunday.ToString());
+            MessageBox.Show(CBWeekStarts.Text.CompareTo(DayOfWeek.Sunday.ToString()).ToString());
+                // The above are != (ret 0 (bool)=false) 
+
+            // CBWeekStarts.SelectedIndex = 1+ (int)RC.StartDay;
         }
     }
 }

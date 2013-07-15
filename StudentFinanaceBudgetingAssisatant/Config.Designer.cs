@@ -53,8 +53,12 @@
             this.NuSFT1Grant = new System.Windows.Forms.NumericUpDown();
             this.DTSFP1 = new System.Windows.Forms.DateTimePicker();
             this.TabBursary = new System.Windows.Forms.TabPage();
-            this.CBBF = new System.Windows.Forms.ComboBox();
-            this.NuBA = new System.Windows.Forms.NumericUpDown();
+            this.DTBT3 = new System.Windows.Forms.DateTimePicker();
+            this.DTBT2 = new System.Windows.Forms.DateTimePicker();
+            this.DTBT1 = new System.Windows.Forms.DateTimePicker();
+            this.NUBT3 = new System.Windows.Forms.NumericUpDown();
+            this.NUBT2 = new System.Windows.Forms.NumericUpDown();
+            this.NUBT1 = new System.Windows.Forms.NumericUpDown();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.CBWeekStarts = new System.Windows.Forms.ComboBox();
             this.BtnSaveConfig = new System.Windows.Forms.Button();
@@ -70,7 +74,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).BeginInit();
             this.TabBursary.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NuBA)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUBT3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUBT2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUBT1)).BeginInit();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUYear)).BeginInit();
             this.SuspendLayout();
@@ -255,7 +261,7 @@
             // NuSFT2Loan
             // 
             this.NuSFT2Loan.DecimalPlaces = 2;
-            this.NuSFT2Loan.Location = new System.Drawing.Point(151, 103);
+            this.NuSFT2Loan.Location = new System.Drawing.Point(151, 97);
             this.NuSFT2Loan.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -269,7 +275,7 @@
             // NuSFT2Grant
             // 
             this.NuSFT2Grant.DecimalPlaces = 2;
-            this.NuSFT2Grant.Location = new System.Drawing.Point(6, 103);
+            this.NuSFT2Grant.Location = new System.Drawing.Point(3, 97);
             this.NuSFT2Grant.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -283,7 +289,7 @@
             // NuSFT1Loan
             // 
             this.NuSFT1Loan.DecimalPlaces = 2;
-            this.NuSFT1Loan.Location = new System.Drawing.Point(148, 32);
+            this.NuSFT1Loan.Location = new System.Drawing.Point(148, 26);
             this.NuSFT1Loan.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -311,7 +317,7 @@
             // NuSFT1Grant
             // 
             this.NuSFT1Grant.DecimalPlaces = 2;
-            this.NuSFT1Grant.Location = new System.Drawing.Point(3, 32);
+            this.NuSFT1Grant.Location = new System.Drawing.Point(3, 26);
             this.NuSFT1Grant.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -331,8 +337,12 @@
             // 
             // TabBursary
             // 
-            this.TabBursary.Controls.Add(this.CBBF);
-            this.TabBursary.Controls.Add(this.NuBA);
+            this.TabBursary.Controls.Add(this.DTBT3);
+            this.TabBursary.Controls.Add(this.DTBT2);
+            this.TabBursary.Controls.Add(this.DTBT1);
+            this.TabBursary.Controls.Add(this.NUBT3);
+            this.TabBursary.Controls.Add(this.NUBT2);
+            this.TabBursary.Controls.Add(this.NUBT1);
             this.TabBursary.Location = new System.Drawing.Point(4, 22);
             this.TabBursary.Name = "TabBursary";
             this.TabBursary.Padding = new System.Windows.Forms.Padding(3);
@@ -341,30 +351,68 @@
             this.TabBursary.Text = "Bursary";
             this.TabBursary.UseVisualStyleBackColor = true;
             // 
-            // CBBF
+            // DTBT3
             // 
-            this.CBBF.FormattingEnabled = true;
-            this.CBBF.Items.AddRange(new object[] {
-            "Anual",
-            "One-off"});
-            this.CBBF.Location = new System.Drawing.Point(129, 6);
-            this.CBBF.Name = "CBBF";
-            this.CBBF.Size = new System.Drawing.Size(121, 21);
-            this.CBBF.TabIndex = 3;
+            this.DTBT3.Location = new System.Drawing.Point(132, 152);
+            this.DTBT3.Name = "DTBT3";
+            this.DTBT3.Size = new System.Drawing.Size(131, 20);
+            this.DTBT3.TabIndex = 16;
             // 
-            // NuBA
+            // DTBT2
             // 
-            this.NuBA.DecimalPlaces = 2;
-            this.NuBA.Location = new System.Drawing.Point(3, 6);
-            this.NuBA.Maximum = new decimal(new int[] {
+            this.DTBT2.Location = new System.Drawing.Point(132, 92);
+            this.DTBT2.Name = "DTBT2";
+            this.DTBT2.Size = new System.Drawing.Size(131, 20);
+            this.DTBT2.TabIndex = 15;
+            // 
+            // DTBT1
+            // 
+            this.DTBT1.Location = new System.Drawing.Point(132, 19);
+            this.DTBT1.Name = "DTBT1";
+            this.DTBT1.Size = new System.Drawing.Size(131, 20);
+            this.DTBT1.TabIndex = 14;
+            // 
+            // NUBT3
+            // 
+            this.NUBT3.DecimalPlaces = 2;
+            this.NUBT3.Location = new System.Drawing.Point(6, 152);
+            this.NUBT3.Maximum = new decimal(new int[] {
             10000,
             0,
             0,
             0});
-            this.NuBA.Name = "NuBA";
-            this.NuBA.Size = new System.Drawing.Size(120, 20);
-            this.NuBA.TabIndex = 2;
-            this.NuBA.ThousandsSeparator = true;
+            this.NUBT3.Name = "NUBT3";
+            this.NUBT3.Size = new System.Drawing.Size(120, 20);
+            this.NUBT3.TabIndex = 13;
+            this.NUBT3.ThousandsSeparator = true;
+            // 
+            // NUBT2
+            // 
+            this.NUBT2.DecimalPlaces = 2;
+            this.NUBT2.Location = new System.Drawing.Point(6, 92);
+            this.NUBT2.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NUBT2.Name = "NUBT2";
+            this.NUBT2.Size = new System.Drawing.Size(120, 20);
+            this.NUBT2.TabIndex = 12;
+            this.NUBT2.ThousandsSeparator = true;
+            // 
+            // NUBT1
+            // 
+            this.NUBT1.DecimalPlaces = 2;
+            this.NUBT1.Location = new System.Drawing.Point(6, 19);
+            this.NUBT1.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.NUBT1.Name = "NUBT1";
+            this.NUBT1.Size = new System.Drawing.Size(120, 20);
+            this.NUBT1.TabIndex = 11;
+            this.NUBT1.ThousandsSeparator = true;
             // 
             // tabPage1
             // 
@@ -398,9 +446,15 @@
             // NUYear
             // 
             this.NUYear.Location = new System.Drawing.Point(13, 239);
+            this.NUYear.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.NUYear.Name = "NUYear";
             this.NUYear.Size = new System.Drawing.Size(62, 20);
             this.NUYear.TabIndex = 7;
+            this.NUYear.ValueChanged += new System.EventHandler(this.YearSelected);
             // 
             // CBYII
             // 
@@ -434,7 +488,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Loan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NuSFT1Grant)).EndInit();
             this.TabBursary.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.NuBA)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUBT3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUBT2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NUBT1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NUYear)).EndInit();
             this.ResumeLayout(false);
@@ -470,11 +526,15 @@
         private System.Windows.Forms.NumericUpDown NuSFT1Grant;
         private System.Windows.Forms.DateTimePicker DTSFP1;
         private System.Windows.Forms.TabPage TabBursary;
-        private System.Windows.Forms.ComboBox CBBF;
-        private System.Windows.Forms.NumericUpDown NuBA;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.ComboBox CBWeekStarts;
         private System.Windows.Forms.NumericUpDown NUYear;
         private System.Windows.Forms.CheckBox CBYII;
+        private System.Windows.Forms.NumericUpDown NUBT3;
+        private System.Windows.Forms.NumericUpDown NUBT2;
+        private System.Windows.Forms.NumericUpDown NUBT1;
+        private System.Windows.Forms.DateTimePicker DTBT3;
+        private System.Windows.Forms.DateTimePicker DTBT2;
+        private System.Windows.Forms.DateTimePicker DTBT1;
     }
 }
