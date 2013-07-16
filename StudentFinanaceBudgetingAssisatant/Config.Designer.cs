@@ -59,11 +59,10 @@
             this.NUBT3 = new System.Windows.Forms.NumericUpDown();
             this.NUBT2 = new System.Windows.Forms.NumericUpDown();
             this.NUBT1 = new System.Windows.Forms.NumericUpDown();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.CBWeekStarts = new System.Windows.Forms.ComboBox();
             this.BtnSaveConfig = new System.Windows.Forms.Button();
             this.NUYear = new System.Windows.Forms.NumericUpDown();
             this.CBYII = new System.Windows.Forms.CheckBox();
+            this.BTNNewYear = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.TabDates.SuspendLayout();
             this.TabStudentFinance.SuspendLayout();
@@ -77,7 +76,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUBT3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUBT2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUBT1)).BeginInit();
-            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NUYear)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,7 +84,6 @@
             this.tabControl1.Controls.Add(this.TabDates);
             this.tabControl1.Controls.Add(this.TabStudentFinance);
             this.tabControl1.Controls.Add(this.TabBursary);
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -414,25 +411,6 @@
             this.NUBT1.TabIndex = 11;
             this.NUBT1.ThousandsSeparator = true;
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.CBWeekStarts);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(277, 204);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // CBWeekStarts
-            // 
-            this.CBWeekStarts.FormattingEnabled = true;
-            this.CBWeekStarts.Location = new System.Drawing.Point(113, 46);
-            this.CBWeekStarts.Name = "CBWeekStarts";
-            this.CBWeekStarts.Size = new System.Drawing.Size(121, 21);
-            this.CBWeekStarts.TabIndex = 0;
-            // 
             // BtnSaveConfig
             // 
             this.BtnSaveConfig.Location = new System.Drawing.Point(206, 236);
@@ -445,7 +423,7 @@
             // 
             // NUYear
             // 
-            this.NUYear.Location = new System.Drawing.Point(13, 239);
+            this.NUYear.Location = new System.Drawing.Point(4, 239);
             this.NUYear.Maximum = new decimal(new int[] {
             10,
             0,
@@ -459,18 +437,29 @@
             // CBYII
             // 
             this.CBYII.AutoSize = true;
-            this.CBYII.Location = new System.Drawing.Point(120, 240);
+            this.CBYII.Location = new System.Drawing.Point(147, 240);
             this.CBYII.Name = "CBYII";
             this.CBYII.Size = new System.Drawing.Size(53, 17);
             this.CBYII.TabIndex = 8;
             this.CBYII.Text = "CBYII";
             this.CBYII.UseVisualStyleBackColor = true;
             // 
+            // BTNNewYear
+            // 
+            this.BTNNewYear.Location = new System.Drawing.Point(66, 236);
+            this.BTNNewYear.Name = "BTNNewYear";
+            this.BTNNewYear.Size = new System.Drawing.Size(75, 23);
+            this.BTNNewYear.TabIndex = 9;
+            this.BTNNewYear.Text = "BTNNewYear";
+            this.BTNNewYear.UseVisualStyleBackColor = true;
+            this.BTNNewYear.Click += new System.EventHandler(this.BTNNewYear_Click);
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.BTNNewYear);
             this.Controls.Add(this.CBYII);
             this.Controls.Add(this.NUYear);
             this.Controls.Add(this.BtnSaveConfig);
@@ -491,7 +480,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.NUBT3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUBT2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NUBT1)).EndInit();
-            this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NUYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -526,8 +514,6 @@
         private System.Windows.Forms.NumericUpDown NuSFT1Grant;
         private System.Windows.Forms.DateTimePicker DTSFP1;
         private System.Windows.Forms.TabPage TabBursary;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.ComboBox CBWeekStarts;
         private System.Windows.Forms.NumericUpDown NUYear;
         private System.Windows.Forms.CheckBox CBYII;
         private System.Windows.Forms.NumericUpDown NUBT3;
@@ -536,5 +522,6 @@
         private System.Windows.Forms.DateTimePicker DTBT3;
         private System.Windows.Forms.DateTimePicker DTBT2;
         private System.Windows.Forms.DateTimePicker DTBT1;
+        private System.Windows.Forms.Button BTNNewYear;
     }
 }

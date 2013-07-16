@@ -20,14 +20,18 @@ namespace StudentFinanaceBudgetingAssisatant
         {
             InitializeComponent();
             LoadConfig();
-            string[] DayOfWeek = { Day.Sunday.ToString(), 
-                                     Day.Monday.ToString(), Day.Tuesday.ToString(),
-                                     Day.Wednesday.ToString(), Day.Thursday.ToString(),
-                                     Day.Friday.ToString(), Day.Saturday.ToString()};
-            CBWeekStarts.Items.AddRange(DayOfWeek);
-            CBWeekStarts.SelectedIndex = 1;
+            
             NUYear.Maximum = YearRecords.Count > 0 ? YearRecords.Count : 1; //Max=1 if list !populated
+            YearSelected();
         }
+
+        /* public string[] DayOfWeekCB = { Day.Sunday.ToString(), */ 
+        /*                              Day.Monday.ToString(), Day.Tuesday.ToString(), */
+        /*                              Day.Wednesday.ToString(), Day.Thursday.ToString(), */
+        /*                              Day.Friday.ToString(), Day.Saturday.ToString()}; */
+
+
+        public string[] DayOfWeekCB = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
 
         private void BtnSaveConfig_Click(object sender, EventArgs e)
         {
@@ -101,14 +105,12 @@ namespace StudentFinanaceBudgetingAssisatant
 
 		public struct Configuration
 		{
-			public DayOfWeek StartDay;
 			public int CurrentYear;
 			public List<YearInfo> YearInfo;
 
-			public Configuration(int StartDay, decimal CurrentYear,
+			public Configuration(decimal CurrentYear,
                 List<YearInfo> YearInfo)
 			{
-				this.StartDay = (DayOfWeek) StartDay;
 				this.CurrentYear = (int) CurrentYear;
 				this.YearInfo = YearInfo;
 			}
@@ -126,16 +128,19 @@ namespace StudentFinanaceBudgetingAssisatant
                 DTSFP3.Value, NUBT3.Value, DTBT3.Value);
 
             YearInfo YI = new YearInfo(CBYII.Checked, T1 , T2, T3);
+            MessageBox.Show(RC.YearInfo.Count.ToString());
+            //int year = (int) NUYear.Value - 1;  //0 based index
+            //MessageBox.Show(year.ToString() + "is year\n" + YearRecords.Count.ToString()); 
+            //if ( YearRecords.Count > 0 && year <= YearRecords.Count)
+            //    // List populated && Year in existing range
+            //{
+            //    //if (YearRecords.Count >= year)
+            //    YearRecords[year] = YI;
+            //}
+            // else 
+            YearRecords.Add(YI);   //PoulateEmpty | append
 
-            int year = (int) NUYear.Value - 1;  //0 based index
-            if (YearRecords.Count > 0)
-            {
-                if (YearRecords.Count >= year)
-                    YearRecords[year] = YI;
-            }
-            else YearRecords.Add(YI);
-
-                RC = new Configuration(CBWeekStarts.SelectedIndex, NUYear.Value, YearRecords);
+            RC = new Configuration(NUYear.Value, YearRecords);
             XmlSerializer XSR = new XmlSerializer(typeof(Configuration));
             FileStream ConfigStream = new FileStream("Finances.rc", FileMode.Create);
             try
@@ -161,13 +166,11 @@ namespace StudentFinanaceBudgetingAssisatant
                 if (ConfigStream.Length > 0)
                 {
                     RC = (Configuration)XSR.Deserialize(ConfigStream);
-
+                    YearRecords = RC.YearInfo;
                     ConfigStream.Close();
 
                     NUYear.Value = RC.CurrentYear;
-                    CBWeekStarts.Text = RC.StartDay.ToString();
                     // Rest of values set by NUYear eventhandler
-
                 }
             }
             else
@@ -180,47 +183,54 @@ namespace StudentFinanaceBudgetingAssisatant
 
         private void YearSelected(object sender, EventArgs e)
         {
-            int year = (int) NUYear.Value-1;
+            YearSelected();
+        }
 
-            if (year < 0 || year > 10)
+        private void YearSelected()
+        {
+            int year = (int) NUYear.Value-1; //Zero index year
+
+            if (year < 0 || year > YearRecords.Count)
                 return;
 
-            /* TermDates */
-            DTT1S.Value = RC.YearInfo[year].T1.TermStart;
-            DTT1E.Value = RC.YearInfo[year].T1.TermEnd;
-            DTT2S.Value = RC.YearInfo[year].T2.TermStart;
-            DTT2E.Value = RC.YearInfo[year].T2.TermEnd;
-            DTT3S.Value = RC.YearInfo[year].T3.TermStart;
-            DTT3E.Value = RC.YearInfo[year].T3.TermEnd;
+            try
+            {
+                /* TermDates */
+                DTT1S.Value = RC.YearInfo[year].T1.TermStart;
+                DTT1E.Value = RC.YearInfo[year].T1.TermEnd;
+                DTT2S.Value = RC.YearInfo[year].T2.TermStart;
+                DTT2E.Value = RC.YearInfo[year].T2.TermEnd;
+                DTT3S.Value = RC.YearInfo[year].T3.TermStart;
+                DTT3E.Value = RC.YearInfo[year].T3.TermEnd;
 
-            /* SF */
-            DTSFP1.Value = RC.YearInfo[year].T1.SFPayment;
-            NuSFT1Grant.Value = RC.YearInfo[year].T1.Grant;
-            NuSFT1Loan.Value = RC.YearInfo[year].T1.Loan;
-            DTSFP2.Value = RC.YearInfo[year].T2.SFPayment;
-            NuSFT2Grant.Value = RC.YearInfo[year].T2.Grant;
-            NuSFT2Loan.Value = RC.YearInfo[year].T2.Loan;
-            DTSFP3.Value = RC.YearInfo[year].T3.SFPayment;
-            NuSFT3Grant.Value = RC.YearInfo[year].T3.Grant;
-            NuSFT3Loan.Value = RC.YearInfo[year].T3.Loan;
+                /* SF */
+                DTSFP1.Value = RC.YearInfo[year].T1.SFPayment;
+                NuSFT1Grant.Value = RC.YearInfo[year].T1.Grant;
+                NuSFT1Loan.Value = RC.YearInfo[year].T1.Loan;
+                DTSFP2.Value = RC.YearInfo[year].T2.SFPayment;
+                NuSFT2Grant.Value = RC.YearInfo[year].T2.Grant;
+                NuSFT2Loan.Value = RC.YearInfo[year].T2.Loan;
+                DTSFP3.Value = RC.YearInfo[year].T3.SFPayment;
+                NuSFT3Grant.Value = RC.YearInfo[year].T3.Grant;
+                NuSFT3Loan.Value = RC.YearInfo[year].T3.Loan;
 
-            /* Bursary */
-            NUBT1.Value = RC.YearInfo[year].T1.Bursary;
-            DTBT1.Value = RC.YearInfo[year].T1.BPayment;
-            NUBT2.Value = RC.YearInfo[year].T2.Bursary;
-            DTBT2.Value = RC.YearInfo[year].T2.BPayment;
-            NUBT3.Value = RC.YearInfo[year].T3.Bursary;
-            DTBT3.Value = RC.YearInfo[year].T3.BPayment;
+                /* Bursary */
+                NUBT1.Value = RC.YearInfo[year].T1.Bursary;
+                DTBT1.Value = RC.YearInfo[year].T1.BPayment;
+                NUBT2.Value = RC.YearInfo[year].T2.Bursary;
+                DTBT2.Value = RC.YearInfo[year].T2.BPayment;
+                NUBT3.Value = RC.YearInfo[year].T3.Bursary;
+                DTBT3.Value = RC.YearInfo[year].T3.BPayment;
 
-            CBYII.Checked = RC.YearInfo[year].YearInIndustry;
-            string strDay =RC.StartDay.ToString();
-            //MessageBox.Show(strDay);
-            CBWeekStarts.Text = strDay;
-            MessageBox.Show(CBWeekStarts.Text + "\n" + DayOfWeek.Sunday.ToString());
-            MessageBox.Show(CBWeekStarts.Text.CompareTo(DayOfWeek.Sunday.ToString()).ToString());
-                // The above are != (ret 0 (bool)=false) 
+                CBYII.Checked = RC.YearInfo[year].YearInIndustry;
+            }
+            catch { MessageBox.Show("C# is trying to do code that it should not"); }
+        }
 
-            // CBWeekStarts.SelectedIndex = 1+ (int)RC.StartDay;
+        private void BTNNewYear_Click(object sender, EventArgs e)
+        {
+            NUYear.Maximum++;
+            NUYear.Value = NUYear.Maximum;
         }
     }
 }
